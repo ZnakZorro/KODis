@@ -1,0 +1,510 @@
+<!doctype html>
+<html lang="pl">
+<head>
+<meta charset="UTF-8">
+<title>KODis</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="shortcut icon" href="data:image/x-icon;base64,AAABAAEAEBAAAAEACABoBQAAFgAAACgAAAAQAAAAIAAAAAEACAAAAAAAAAEAAAAAAAAAAAAAAAEAAAAAAAAsIRcAAAAAABQPCwAQDQgAJBwTACUcEwALCQIAHhcPAAoHBgAGBQMAGhQOAAICAgADAgIAKB4VABAMCQAhGREACQcFAAoIAwAdFhAABwUCAC4jGAAnHhQADwwIACMbEwAQDAgACwkHAA0KBQAdFg8ABQQDABURCwAWEQsAKiAWACMbEgAMCQYAIBgRABgTDQAFBAIABAMEAAYEAgARDgkAJh0UAB8YEAAEAwMALSIXAOGvMQANCwcAIhoSAAsIBgAbFQ4ABwUFABgSDQAUEAoAAAABABANCQARDQkADgsGAA4KCAALCQMAHhcQAAwJAwAGBQQALiQYAAcFBAAXEgwAKyEXAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAIi4FDUArAAEsHxQ9Kx8oIBs6DxcFBAEsLCwgFRUEDzojCjASAQEsLCwsLAcpOjAjMx4/MgEsLCwsLCwBMj8dAg42NgEnASwsLCwBODY1GBYZIQEsLSEDLCwBMQEBLAgvPgEsLBABPDcsJQEBLCwsCQEsLCwLARoJHCoBLCwsLCwsLCwsNAEsOwwmLCwsLCwsASwsLAEBLCw5AREsLCwsLAEBLCwBASwsLDkBESwsLAEBAQEsAQEsLCwsBgEkLAEBAQEBAQEBLCwsLCwTAQEBAQEBAQEBASwsLCwsLAEBAQEBAQEBAQEBLCwsLAEBAQEBAQEBAQEBAQEsLAEBAQEBAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=" />
+<!--link rel="stylesheet" href="klawisze-ciemne.css"-->
+<link rel="stylesheet" href="_/kodis.css">
+<link rel="stylesheet" href="_/klawisze-papier.css">
+
+<style>
+
+</style>
+<script type="text/javascript" charset="utf-8" src="cordova.js"></script>
+<script id="kodisrc" type="text/javascript" async="true"></script>
+
+<script>
+var radios = 
+[
+
+    {
+        "title": "TOK FM",
+        "stream": "http://poznan5-1.radio.pionier.net.pl:8000/radiotok.ogg",
+    },
+    {
+        "title": "RMF Classic",
+        "stream": "http://31.192.216.5:8000/rmf_classic"
+    },
+    {
+        "title": "Jazz Ballads",
+        "stream": "http://pub6.jazzradio.com:80/jr_jazzballads_aacplus?d1e1bfa0a67fafc4764954be"
+    },
+    {
+        "title": "Piano Trios",
+        "stream": "http://pub1.jazzradio.com:80/jr_pianotrios_aacplus?d1e1bfa0a67fafc4764954be"
+    },
+    {
+        "title": "Vocal Legend",
+        "stream": "http://pub1.jazzradio.com:80/jr_vocallegends_aacplus?d1e1bfa0a67fafc4764954be"
+    },
+    {
+        "title": "Gypsy Jazz",
+        "stream": "http://pub1.jazzradio.com:80/jr_gypsyjazz?d1e1bfa0a67fafc4764954be"
+    },
+    {
+        "title": "Guitar Jazz",
+        "stream": "http://pub6.jazzradio.com:80/jr_guitarjazz?d1e1bfa0a67fafc4764954be"
+    },
+    {
+        "title": "Guitar Acoustic",
+        "stream": "http://streaming.radionomy.com/Acoustic-Guitar"
+    },
+    {
+        "title": "PR-1 Jedynka",
+        "stream": "mms://stream.polskieradio.pl/program1"
+    },
+    {
+        "title": "PR-2 Dwójka",
+        "stream": "mms://stream.polskieradio.pl/program2"
+    },
+    {
+        "title": "PR-3 Trójka",
+        "stream": "mms://stream.polskieradio.pl/program3"
+    },
+    {
+        "title": "PR-4 Czwórka",
+        "stream": "mms://stream.polskieradio.pl/program4"
+    },
+    {
+        "title": "Szczecin Radio",
+        "stream": "http://stream4.nadaje.com:11986/prs.aac"
+    },
+
+    {
+        "title": "Sax4Love",
+        "stream": "http://streaming.radionomy.com/Sax4Love"
+    },
+    {
+        "title": "Jazz APh",
+        "stream": "http://50.7.173.162:8014/"
+    },
+    {
+        "title": "Classical APh",
+        "stream": "http://50.7.173.162:8012/"
+    },
+    {
+        "title": "Smooth lounge",
+        "stream": "http://listen.radionomy.com/the-smooth-lounge"
+    },
+    {
+        "title": "Złote Przeboje",
+        "stream": "http://mainstream.radioagora.pl/tuba9-1.mp3"
+    },
+    {
+        "title": "PL-Smooth Jazz",
+        "stream": "http://178.32.161.112:5700"
+    },
+    {
+        "title": "PL - JAZZ",
+        "stream": "http://91.121.92.167:8700"
+    },
+    {
+        "title": "PL-Klasycznie",
+        "stream": "http://91.121.92.167:8900"
+    },
+    {
+        "title": "Niezapomniane",
+        "stream": "http://178.32.161.112:9100"
+    },
+    {
+        "title": "Najwieksze 80",
+        "stream": "http://178.32.161.113:9200"
+    },
+    {
+        "title": "Najpiękniejsze",
+        "stream": "http://mp3.polskieradio.pl:8020"
+    }
+];
+
+var config=[
+{
+		"title": "Orange",
+		"protokol": "http://",
+		"ip": "192.168.1.105",
+		"port": "8080",
+		"class": "active"
+	}, {
+		"title": "Malina",
+		"protokol": "http://",
+		"ip": "192.168.1.112",
+		"port": "8080",
+		"class": ""
+	}, {
+		"title": "Local",
+		"protokol": "http://",
+		"ip": "127.1.1.0",
+		"port": "8080",
+		"class": ""
+	}, {
+		"title": "webWI",
+		"protokol": "http://",
+		"ip": "82.145.71.139",
+		"port": "8080",
+		"class": ""
+	}, {
+		"title": "WIZUT",
+		"protokol": "http://",
+		"ip": "82.145.73.90",
+		"port": "8080",
+		"class": ""
+	}
+];
+
+
+var wybranyKomputer = 0;
+var wybraneRadio=0;
+
+
+
+
+	// DOM READY
+	function onDeviceReady() {
+		odczytajConfig();
+		wpiszKlawiszeRadios();
+		if (localStorage.getItem("___pi___radio")) wybraneRadio = localStorage.getItem("___pi___radio");
+			
+			// Events for klawisze bash
+			[].forEach.call(document.querySelectorAll('button.bash'), function(el) {
+				el.addEventListener('click', function() {
+					sendBashCommand(this);
+				})
+			})			
+			ustawActive();
+			//getInfo();
+			ustawDevices();
+			var vol=25;
+			document.getElementById("VolSlider").value=vol;
+			document.getElementById("VolVal").innerHTML=vol;
+			window.addEventListener("resize", function(){ekraninfo()}, true);
+			ekraninfo();
+	}	// Dom ready
+	
+
+   function onLoad() {
+        document.addEventListener("deviceready", onDeviceReady, false);
+
+		try {if (device.uuid) {console.log(device.uuid);}	}
+		catch(err) {onDeviceReady();}
+		
+	}
+
+	function ustawActive(){
+		[].forEach.call(document.querySelectorAll('#klawisze button'), function(el) {
+			if (el.dataset.radio == wybraneRadio) el.className='active'; else el.className='';
+		});
+	}
+
+	function wpiszKlawiszeRadios(){
+		var klawisze = document.getElementById('klawisze');
+		klawisze.innerHTML='';
+		// Events for klawisze radia
+		for (var a in radios){
+			var klaw = document.createElement('button');
+				klaw.innerHTML=radios[a]['title'];
+				klaw.setAttribute('data-radio',parseInt(a)); 
+				klaw.addEventListener('click', radioOn, false); 
+			klawisze.appendChild(klaw);	
+		}
+		if (wybraneRadio != 0) dajInfoRadio('radio='+wybraneRadio,true);
+		
+	}
+
+function preparujWpis(wpis_wiadomosc){
+	var infoOut  = '';
+	//RMF Classic: Daniel Bloom - Tulipany [playing] #2/24 0:00/0:00 (0%) volume: 0% repeat: off random: off single: off consume: off
+	var arr = wpis_wiadomosc.split('#');
+	if (arr[0]) infoOut = '<span>'+arr[0]+'</span>';
+	if (arr[1]){
+		var ar = arr[1].split('volume: ');
+		var v = ar[1].slice(0,3);
+		infoOut += ' &nbsp; <span>'+v+'</span>';
+	}
+	return infoOut;
+}
+
+
+///////////////////////////////
+	Element.prototype.remove = function() {
+		this.parentElement.removeChild(this);
+	}
+
+	NodeList.prototype.remove = HTMLCollection.prototype.remove = function() {
+		for(var i = this.length - 1; i >= 0; i--) {
+			if(this[i] && this[i].parentElement) {
+				this[i].parentElement.removeChild(this[i]);
+			}
+		}
+	}
+
+
+	var pierwszy = true;
+	
+/*
+	function getInfo(){
+		dajInfoRadio('info=radio',true);
+		setTimeout(function(){getInfo();},10000);
+	}
+*/	
+	
+	
+	function kodinfo(){
+			var czas = (new Date()).getTime();
+			var protokol = config[wybranyKomputer]['protokol'];
+			var ip = config[wybranyKomputer]['ip'];
+		var url = protokol+ip+'/jsonrpc?request={"jsonrpc": "2.0", "method": "Player.GetItem", "params": { "properties": ["title", "thumbnail", "file", "fanart", "streamdetails"], "playerid": 0 }, "id": "AudioGetItem"}&t='+czas+'&callback=foo';
+		//console.log(url);
+		kodi(url);	
+	}
+	setTimeout(function(){kodinfo();},1000);
+	setInterval(function(){kodinfo();},15000);
+
+	function kodi(url) {
+		//var url = encodeURIComponent(url);
+		if (document.getElementById('kodis')) {
+			document.getElementById('kodis').remove();
+		}
+		var script = document.createElement('script'); 
+		script.type = 'text/javascript'; 
+		script.async = true;
+		script.id = "kodis";
+		//console.log(url);
+		script.src = url;
+		//console.log(script.src)
+		var sc = document.getElementsByTagName('script')[0]; 	
+		sc.parentNode.insertBefore(script, sc);
+		pierwszy=true;
+	}
+		
+	function foo(ret){
+		//console.log(ret);
+		var info = document.getElementById('info')
+		var req = ret.result;
+		//console.log(req,typeof(req));
+		if(req){
+			info.innerHTML = '~';
+			
+			if (typeof(req) == 'string') info.innerHTML += ' '+req+' ';
+			if (typeof(req) == 'number') info.innerHTML += ' '+req+' ';
+			
+			if (req.speed) {info.innerHTML += req.speed; console.log(req.speed);}// else info.innerHTML += ' ~ ';
+			
+			if (req.item){
+				if (req.item.label != null){info.innerHTML += req.item.label+' '; console.log(req.item.label);}
+			}
+			if (req.addon){
+				 if (req.addon.addonid) {info.innerHTML += req.addon.addonid+' ';}
+			}
+			if (req.artists){
+				for (var a in req.artists){
+					console.log(req.artists[a]['artist'],req.artists[a]['label'], req.artists[a]);
+					info.innerHTML += req.artists[a]['artist']+' / ';
+				 }
+			}
+			if (req.albums){
+				for (var a in req.albums){
+					console.log(req.albums[a]['artist'][0],req.albums[a]['label'], req.albums[a]);
+					info.innerHTML += req.albums[a]['label']+' / ';
+				 }
+			}
+			if (req.songs){
+				for (var a in req.songs){
+					console.log(req.songs[a]['artist'][0],req.songs[a]['label'], req.songs[a]);
+					info.innerHTML += req.songs[a]['label']+' / ';
+				 }
+			}
+			
+			if (pierwszy) setTimeout(function(){kodinfo(); pierwszy=false;},3000);
+		}
+	}
+
+/*QQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQ*/	
+	var wpis_wiadomosc='';
+	
+	
+	// włącz radio wg numeru
+	function radioOn(){
+		dataRadio = this.dataset.radio;	
+		var intRadio = parseInt(dataRadio);
+		document.getElementById('info_wiadomosc').innerHTML = '';
+			var czas = (new Date()).getTime();
+			var protokol = config[wybranyKomputer]['protokol'];
+			var ip = config[wybranyKomputer]['ip'];
+			var port = ':'+config[wybranyKomputer]['port'];
+			var stream = radios[intRadio]['stream'];
+			var url = protokol+ip+'/jsonrpc?request={"jsonrpc":"2.0","method":"Player.Open","params":{"item":{"file":"'+stream+'"},"options":{"repeat":"one"}},"id":1}&t='+czas+'&callback=foo';
+			kodi(url);
+		if(intRadio<0 || intRadio>900) return;
+		wybraneRadio = dataRadio;
+		localStorage.setItem("___pi___radio",wybraneRadio);
+		document.getElementById('wybrane').innerHTML=radios[parseInt(wybraneRadio)]['title'];
+		ustawActive();
+	}
+	
+
+	
+// po kliknieciu w klawisz
+function wybierzDev(d){
+	wybranyKomputer = d;
+	ustawDevices();
+	localStorage.setItem("___radio___config", JSON.stringify(config));
+}
+	
+function ustawDevices(){
+	var iled = config.length;
+	var devices = document.getElementById('devices');
+	devices.innerHTML='';
+	for (var d in config){
+		var klasa='';
+		if (d==wybranyKomputer) klasa ='active';
+		config[d]['class']=klasa;
+		devices.insertAdjacentHTML('beforeend','<button class="admin '+klasa+'" onClick=wybierzDev("'+d+'")>'+config[d]['title']+'</button>');
+	}
+	document.getElementById('wybranyKomputer').innerHTML = config[wybranyKomputer]['title'];
+}
+
+function mpcUpdate(){
+	var mpc_update = document.getElementById('mpc_update');
+	mpc_update.style.display='block';
+	mpc_update.innerHTML='';
+	mpc_update.insertAdjacentHTML('beforeend','<button class="mini right" onClick=\'document.getElementById("mpc_update").style.display="none";\'>X</button><br />');
+	mpc_update.insertAdjacentHTML('beforeend',"#!/bin/bash<br />");
+	mpc_update.insertAdjacentHTML('beforeend',"mpc clear<br />");
+	for (var r in radios){
+		mpc_update.insertAdjacentHTML('beforeend',"mpc add "+radios[r]['stream']+'<br />');
+	}
+	mpc_update.insertAdjacentHTML('beforeend',"<br /><br/>");
+}	
+
+function odczytajConfig(){
+	var odczyt = localStorage.getItem("___radio___config");
+	if (odczyt){
+		config = JSON.parse(odczyt);
+		for(var c in config){
+			if(config[c]['class']=='active') wybranyKomputer = c;
+		}
+	}
+}
+
+function zapiszConfig(){
+	var configs = document.querySelectorAll('div#config_update div');
+	var ilec = configs.length;
+	for (var id=0; id<ilec; id++){
+		var inputy = document.querySelectorAll('div#config'+id+' input');
+		for (var i in inputy){
+			var input = inputy[i];
+			if (typeof(input) == 'object'){
+				var key = (input.id.split('config'+id))[1];
+				var val = input.value;
+				config[id][key]=val;
+			}
+		}	
+	}
+	var zapisTXT = JSON.stringify(config);
+	localStorage.setItem("___radio___config", zapisTXT);
+	setTimeout(function(){document.getElementById("config_update").style.display="none";},500);
+}
+
+
+function showConfigUpdate(){
+	var config_update = document.getElementById('config_update');	
+	config_update.innerHTML='';
+	config_update.style.display='block';
+	for (var c in config){
+		var conf = config[c];
+		var id = 'config'+c;
+		var newDiv = document.createElement('div');
+			newDiv.id = id;
+			newDiv.className="configs";
+			newDiv.insertAdjacentHTML('beforeend','<input id="'+id+'title"    value="'+conf.title+'"    title="nazwa"    style="width:6em;" />');
+			newDiv.insertAdjacentHTML('beforeend','<input id="'+id+'protokol" value="'+conf.protokol+'" title="protokol" style="width:3.5em;" />');
+			newDiv.insertAdjacentHTML('beforeend','<input id="'+id+'ip"       value="'+conf.ip+'"       title="ip"       style="width:9em;" />');
+			newDiv.insertAdjacentHTML('beforeend','<input id="'+id+'port"     value="'+conf.port+'"     title="port"     style="width:3.5em;" />');
+		config_update.appendChild(newDiv);
+	}
+	var conf = config[0];
+	config_update.insertAdjacentHTML('beforeend',"<button onClick='zapiszConfig()'>Zapisz config</button>");
+	config_update.insertAdjacentHTML('beforeend','<button class="mini right" onClick=\'document.getElementById("config_update").style.display="none";\'>X</button>');
+	config_update.insertAdjacentHTML('beforeend','<button class="mini right" onClick="resetConfig()">()</button>');
+	//document.getElementById('config_update').style.display='none';
+}	
+
+function resetConfig(){
+	localStorage.removeItem("___radio___config");
+	location.reload();
+}
+
+
+function ustawVol(ten){
+	var vol = Math.round(ten.value);
+	dajInfoRadio('radio=v'+vol);
+	document.getElementById("VolVal").innerHTML=vol;
+	document.getElementById("glosnosc").innerHTML=vol;
+	
+}
+function ustawVolDown(ten){
+	ten = 	document.getElementById("VolSlider");
+	ten.stepDown(2);
+	ustawVol(ten);
+}
+function ustawVolUp(ten){
+	ten = 	document.getElementById("VolSlider");
+	ten.stepUp(2);
+	ustawVol(ten);
+}
+
+
+function ekraninfo(){
+	var ew = screen.width;
+	var eh = screen.height;
+	var ww = window.innerWidth;
+	var wh = window.innerHeight;	
+	console.log(ew,eh,ww,wh);
+	var inf = document.getElementById('ekraninfo');
+	inf.innerHTML = 'W='+ww+' H='+wh;
+}
+
+</script>
+</head>
+
+<body onload="onLoad();" >
+
+	<h3 style="float:left;"><span id="wybranyKomputer">Internet</span> [<span id="glosnosc"></span>%] <span id="wybrane">Radio</span></h3>
+	<div class="pole" id="info"></div>
+
+	<div style="clear:both; width:100%;">
+		<button class="klaw admin vol glos" onClick="ustawVolDown();"><</button>
+		<button class="klaw admin vol" onClick="dajInfoRadio('radio=0')"><b>Start</b></button>
+		<button class="klaw admin vol" onClick="dajInfoRadio('radio=v0')"><b>Stop</b></button>
+		<button class="klaw admin vol glos" onClick="ustawVolUp();">></button>
+
+	</div>
+	
+	<div style="clear:both; width:100%;">
+		<p class="note">Volume: <span id="VolVal">0</span>%</p>
+		<input id="VolSlider" type="range" min="0" max="100" step="2.5" defaultValue="25" onChange="ustawVol(this)" />
+	</div>
+	<div id="klawisze"></div>
+	
+
+
+	<div id="info_wiadomosc"></div>
+	
+	<div class="div_klawiszy">
+		<button class="klaw admin" onClick="mpcUpdate()">MPC update</button>
+		<button class="klaw admin" onClick="showConfigUpdate()">Config</button>
+		<div id="config_update" style="display:none;"></div>
+		<div id="mpc_update" style="display:none;"></div>
+	</div>
+<br />
+	<div style="float:right;" id="devices"></div>
+<br />
+<div class="pole" id="debug"></div>
+<div class="pole" id="ekraninfo"></div>
+<br /><br /><br /><br /><br />
+
+
+
+</body>
+</html>

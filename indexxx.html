@@ -1,0 +1,159 @@
+<!doctype html>
+<html lang="pl">
+<head>
+	<meta charset="UTF-8">
+	<title>KODIs</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1"></meta>
+	<style>
+		body {margin:1em; font:normal 16px verdana;}
+		button {font-size:1em; padding:0.5em; margin:0.5em;}
+		#info {background:#f8f8f8; border:1px solid #eee; padding:0.3em; font-size:0.9em;  float:right; clear:right; width:100%; min-height:1.3em;}
+	</style>
+	<script type="text/javascript" src="_/ips.js"></script>
+	<script type="text/javascript" src="_/kody.js"></script>
+	
+	<script id="kodisrc" type="text/javascript" async="true"></script>
+
+<script>
+var kodiIP=null;
+	
+	//http://82.145.73.90/jsonrpc?request={%22jsonrpc%22:%222.0%22,%22method%22:%22Player.Open%22,%22params%22:{%22item%22:{%22file%22:%22http://gdansk1-1.radio.pionier.net.pl:8000/pl/tuba10-1.mp3%22},%22options%22:{%22repeat%22:%22one%22}},%22id%22:1}
+	
+	//http://82.145.73.90/jsonrpc?Collection
+	
+	
+	Element.prototype.remove = function() {
+		this.parentElement.removeChild(this);
+	}
+
+	NodeList.prototype.remove = HTMLCollection.prototype.remove = function() {
+		for(var i = this.length - 1; i >= 0; i--) {
+			if(this[i] && this[i].parentElement) {
+				this[i].parentElement.removeChild(this[i]);
+			}
+		}
+	}
+
+
+var pierwszy = true;
+
+	function kodi(val,dir) {
+		var param = encodeURIComponent(kody[val]);
+		var czas = (new Date()).getTime();
+		if (document.getElementById('kodis')) {
+			document.getElementById('kodis').remove();
+		}
+		var script = document.createElement('script'); 
+		script.type = 'text/javascript'; 
+		script.async = true;
+		script.id = "kodis";
+		console.log("param=",kody[val]);
+		if (dir) script.src = "http://82.145.73.90/"+kody[val]+"&callback=foo";
+		else script.src = "http://82.145.73.90/jsonrpc?request="+param+"&t="+czas+'&callback=foo';
+		//console.log(script.src)
+		var sc = document.getElementsByTagName('script')[0]; 	
+		sc.parentNode.insertBefore(script, sc);
+		pierwszy=true;
+		console.log('kodiIP=',kodiIP)
+	}
+		
+function foo(ret){
+	var info = document.getElementById('info')
+	var req = ret.result;
+	console.log(req,typeof(req));
+	if(req){
+		info.innerHTML = '';
+		
+		if (typeof(req) == 'string') info.innerHTML += ' '+req+' ';
+		if (typeof(req) == 'number') info.innerHTML += ' '+req+' ';
+		
+		if (req.speed) {info.innerHTML += req.speed; console.log(req.speed);}// else info.innerHTML += ' ~ ';
+		
+		if (req.item){
+			if (req.item.label != null){info.innerHTML += req.item.label+' '; console.log(req.item.label);}
+		}
+		if (req.addon){
+			 if (req.addon.addonid) {info.innerHTML += req.addon.addonid+' ';}
+		}
+		if (req.artists){
+			for (var a in req.artists){
+				console.log(req.artists[a]['artist'],req.artists[a]['label'], req.artists[a]);
+				info.innerHTML += req.artists[a]['artist']+' / ';
+			 }
+		}
+		if (req.albums){
+			for (var a in req.albums){
+				console.log(req.albums[a]['artist'][0],req.albums[a]['label'], req.albums[a]);
+				info.innerHTML += req.albums[a]['label']+' / ';
+			 }
+		}
+		if (req.songs){
+			for (var a in req.songs){
+				console.log(req.songs[a]['artist'][0],req.songs[a]['label'], req.songs[a]);
+				info.innerHTML += req.songs[a]['label']+' / ';
+			 }
+		}
+		
+		if (pierwszy) setTimeout(function(){kodi('cojestgrane'); pierwszy=false;},3000);
+	}
+}
+
+
+setTimeout(function(){kodi('cojestgrane');},1000);
+setInterval(function(){kodi('cojestgrane');},15000);
+
+
+function radio(ten){
+	console.log(ten);
+	var u = ten.dataset.radio;
+	kody.radio='{"jsonrpc":"2.0","method":"Player.Open","params":{"item":{"file":"'+u+'"},"options":{"repeat":"one"}},"id":1}';	
+	kodi('radio');
+}
+
+</script>	
+	
+</head>
+<body>
+	<div id="info" class=""></div>
+	<button onClick="kodi('playpause');"> Play / Pause </button> 
+	<button onClick="kodi('slide2015');"> ###2015 </button> 
+	<button onClick="kodi('collection',true);"> collection </button> 
+	<hr>
+	<button onClick="kodi('aaaaa');"> exaaaaa </button> 
+	<button onClick="kodi('ainfo');"> a info </button> 
+	<button onClick="kodi('tvbox');"> tvbox </button> 
+<hr >
+<button onClick="kodi('cojestgrane');"> Co jest grane </button> 
+<button onClick="kodi('playpause');"> Play / Pause </button> 
+<button onClick="kodi('vol0');"> V0 </button> 
+<button onClick="kodi('vol10');"> V10 </button> 
+<button onClick="kodi('vol25');"> V25 </button> 
+<button onClick="kodi('vol50');"> V50 </button> 
+<button onClick="kodi('vol75');"> V75 </button> 
+<button onClick="kodi('vol99');"> V99 </button> 
+<hr >
+
+<button onClick="kodi('pr3');"> Trójka </button> 
+<button onClick="kodi('tokfm');"> TOK FM </button> 
+<button onClick="kodi('rfmc');"> RFM Classic </button> 
+<button onClick="kodi('tok');"> tok fm </button> 
+
+<button onClick="kodi('jball');"> Jazz Ball </button> 
+<button onClick="kodi('jpiano');"> Jazz Piano </button> 
+<button onClick="kodi('jvocal');"> Jazz Vocal </button> 
+<hr />
+<button onClick="kodi('artist');"> artist </button> 
+<button onClick="kodi('albums');"> albums </button> 
+<button onClick="kodi('songs');"> songs </button> 
+<hr />
+<!--http://www.classicalradio.com/-->
+<button onClick="radio(this);" data-radio="http://pub8.classicalradio.com:80/cr_chopin?829ca7436799f18bda7e56f8"> Chopin </button> 
+<button onClick="radio(this);" data-radio="http://pub8.classicalradio.com:80/cr_pianoworks?829ca7436799f18bda7e56f8"> Piano </button> 
+<button onClick="radio(this);" data-radio="http://pub7.classicalradio.com:80/cr_choralworks?829ca7436799f18bda7e56f8"> Chóry </button> 
+<button onClick="radio(this);" data-radio="http://pub7.classicalradio.com:80/cr_romanticperiod?829ca7436799f18bda7e56f8"> Romantic </button> 
+<button onClick="radio(this);" data-radio="http://pub8.classicalradio.com:80/cr_operas?829ca7436799f18bda7e56f8"> Opera </button> 
+<button onClick="radio(this);" data-radio="http://pub8.classicalradio.com:80/cr_classicalrelaxation?829ca7436799f18bda7e56f8"> Relax </button> 
+
+	
+</body>
+</html>

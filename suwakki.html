@@ -1,0 +1,207 @@
+<!doctype html>
+<html lang="pl">
+<head>
+	<meta charset="UTF-8">
+	<title>Suwakki</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1"></meta>
+	
+	
+<style>
+body,
+html {
+  margin: 10px;
+  padding: 10px;
+  text-align: center;
+}
+#proRangeSlider {
+    border: 1px solid #CCC;
+    padding: 0;
+}
+div {
+    background: #f1f1f1;
+    border-bottom: 1px dotted #666;
+    padding: 15px 0px 15px 0px;
+}
+div:last-child {
+    border: none;
+}
+h1 {
+  color: #ecf0f1;
+  text-align: center;
+  font-size: 40px;
+  margin: 0px;
+  height: 70px;
+}
+
+input {
+  -webkit-appearance: none;
+  width: 160px;
+  height: 20px;
+  margin: 10px 50px;
+  background: linear-gradient(to right, #16a085 0%, #16a085 100%);
+  background-size: 150px 10px;
+  background-position: center;
+  background-repeat: no-repeat;
+  overflow: hidden;
+  outline: none;
+  zoom: 130%;
+  display: block;
+  margin: auto;
+  margin-bottom: 30px;
+}
+ input::-webkit-slider-thumb {
+ -webkit-appearance: none;
+ width: 20px;
+ height: 20px;
+ background: #27ae60;
+ position: relative;
+ z-index: 3;
+}
+ input::-webkit-slider-thumb:after {
+ content: " ";
+ width: 160px;
+ height: 10px;
+ position: absolute;
+ z-index: 1;
+ right: 20px;
+ top: 5px;
+ background: #2ecc71;
+}
+ .green::-webkit-slider-thumb {
+ background: #27ae60;
+}
+ .green::-webkit-slider-thumb:after {
+ background: #2ecc71;
+}
+ .red::-webkit-slider-thumb {
+ background: #c0392b;
+}
+ .red::-webkit-slider-thumb:after {
+ background: #e74c3c;
+}
+ .blue::-webkit-slider-thumb {
+ background: #2980b9;
+}
+ .blue::-webkit-slider-thumb:after {
+ background: #3498db;
+}
+ .orange::-webkit-slider-thumb {
+ background: #d35400;
+}
+ .orange::-webkit-slider-thumb:after {
+ background: #e67e22;
+}
+ .purple::-webkit-slider-thumb {
+ background: #8e44ad;
+}
+ .purple::-webkit-slider-thumb:after {
+ background: #9b59b6;
+}
+ .gray::-webkit-slider-thumb {
+ background: #7f8c8d;
+}
+ .gray::-webkit-slider-thumb:after {
+ background: #95a5a6;
+}
+output {
+    
+}
+
+.submit {
+    border: none;
+    padding: 4px;
+    width: auto;
+    background: orange;
+    text-transform: uppercase;
+    color: #FFF;
+    font-family: sans-serif;
+    cursor: pointer;
+}
+</style>	
+
+<script>
+
+function proRangeSlider(sliderid, outputid, colorclass) {
+        var x = document.getElementById(sliderid).value;  
+        document.getElementById(outputid).innerHTML = x;
+        document.getElementById(sliderid).setAttribute('class', colorclass);
+        
+        updateTotal();
+}
+
+var total = 0;
+function updateTotal() {
+        var list= document.getElementsByClassName("range");
+        [].forEach.call(list, function(el) {
+            console.log(el.value);
+            total += parseInt(el.value);
+        }); 
+        document.getElementById("n_total").innerHTML = total;
+      
+}
+$.fn.serializeObject = function()
+{
+    var o = {};
+    var a = this.serializeArray();
+    $.each(a, function() {
+        if (o[this.name] !== undefined) {
+            if (!o[this.name].push) {
+                o[this.name] = [o[this.name]];
+            }
+            o[this.name].push(this.value || '');
+        } else {
+            o[this.name] = this.value || '';
+        }
+    });
+    return o;
+};
+
+$(function() {
+    $('form').submit(function() {
+        $('#result').text(JSON.stringify($('form').serializeObject()));
+        return false;
+    });
+});
+</script>	
+	
+</head>
+<body>
+	
+<form action="" method="post">
+    
+    <div id="proRangeSlider">
+    <div id="total">TOTAL: <span id="n_total"></span></div>
+    <div>
+        <input type="range" name="costPerDay" class="range orange" id="rangeSlider1" value="20" oninput="proRangeSlider(this.id, 'output1', 'orange')">
+        <output id="output1">20</output>
+    </div>
+    
+    <div>
+        <input type="range" name="numberOfDays" value="20" id="rangeSlider2" class="blue range" oninput="proRangeSlider(this.id, 'output2', 'blue')">
+        <output id="output2">20</output>
+    </div>
+        
+    <div>    
+        <input type="range" id="rangeSlider3" name="designCost" value="40" class="red range" oninput="proRangeSlider(this.id, 'output3', 'red')">
+        <output id="output3">40</output>
+    </div>
+        
+    <div>
+        <input type="range" id="rangeSlider4" name="cmsIntegration" value="64" class="purple" oninput="proRangeSlider(this.id, 'output4', 'purple')">
+        <output id="output4">64</output>
+    </div>
+    
+    <div>    
+        <input type="range" id="rangeSlider5" name="seoContentStrategy" value="75" class="gray range" oninput="proRangeSlider(this.id, 'output5', 'gray')">
+        <output id="output5">75</output>
+    </div>
+</div>       
+<p><input class="submit" type="submit" /></p>
+</form>
+<h2>JSON</h2>
+<pre id="result">
+</pre>
+
+</body>
+</html>
+
