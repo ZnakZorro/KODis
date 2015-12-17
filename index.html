@@ -10,7 +10,7 @@
 <link rel="stylesheet" href="klawisze-papier.css">
 
 <style>
-
+button.vol {width:14%;}
 </style>
 <script type="text/javascript" charset="utf-8" src="cordova.js"></script>
 <script id="kodisrc" type="text/javascript" async="true"></script>
@@ -273,7 +273,27 @@ function preparujWpis(wpis_wiadomosc){
 		setTimeout(function(){getInfo();},10000);
 	}
 */	
+		function ustawVolSlider(ten){
+			var vol = parseInt(ten.value);
+			console.log(vol);
+			vol= Math.round(10*Math.sqrt(vol));
+			console.log(vol);
+			ustawVol(vol);
+		}
 	
+
+		function ustawVol(vol){
+			var czas = (new Date()).getTime();
+			var protokol = config[wybranyKomputer]['protokol'];
+			var ip = config[wybranyKomputer]['ip'];
+			var url = protokol+ip+'/jsonrpc?request={"jsonrpc":"2.0","id":"1","method":"Application.SetVolume","params":{"volume":'+vol+'}}, "id": "AudioGetItem"}&t='+czas+'&callback=foo';
+			
+			kodi(url);	
+			document.getElementById("VolVal").innerHTML=vol;
+			document.getElementById("glosnosc").innerHTML=vol;
+		}
+
+
 	
 	function kodinfo(){
 			var czas = (new Date()).getTime();
@@ -283,6 +303,9 @@ function preparujWpis(wpis_wiadomosc){
 		//console.log(url);
 		kodi(url);	
 	}
+	
+	
+	
 	setTimeout(function(){kodinfo();},1000);
 	setInterval(function(){kodinfo();},15000);
 
@@ -462,23 +485,7 @@ function resetConfig(){
 }
 
 
-function ustawVol(ten){
-	var vol = Math.round(ten.value);
-	dajInfoRadio('radio=v'+vol);
-	document.getElementById("VolVal").innerHTML=vol;
-	document.getElementById("glosnosc").innerHTML=vol;
-	
-}
-function ustawVolDown(ten){
-	ten = 	document.getElementById("VolSlider");
-	ten.stepDown(2);
-	ustawVol(ten);
-}
-function ustawVolUp(ten){
-	ten = 	document.getElementById("VolSlider");
-	ten.stepUp(2);
-	ustawVol(ten);
-}
+
 
 
 function ekraninfo(){
@@ -500,16 +507,20 @@ function ekraninfo(){
 	<div class="pole" id="info"></div>
 
 	<div style="clear:both; width:100%;">
-		<button class="klaw admin vol glos" onClick="ustawVolDown();"><</button>
-		<button class="klaw admin vol" onClick="dajInfoRadio('radio=0')"><b>Start</b></button>
-		<button class="klaw admin vol" onClick="dajInfoRadio('radio=v0')"><b>Stop</b></button>
-		<button class="klaw admin vol glos" onClick="ustawVolUp();">></button>
+
+	
+		<button class="klaw admin vol glos" onClick="ustawVol(0);">0</button>
+		<button class="klaw admin vol"      onClick="ustawVol(33)"><b>10</b></button>
+		<button class="klaw admin vol"      onClick="ustawVol(66)"><b>25</b></button>
+		<button class="klaw admin vol"      onClick="ustawVol(80)"><b>50</b></button>
+		<button class="klaw admin vol"      onClick="ustawVol(90)"><b>75</b></button>
+		<button class="klaw admin vol glos" onClick="ustawVol(100)">100</button>
 
 	</div>
 	
 	<div style="clear:both; width:100%;">
 		<p class="note">Volume: <span id="VolVal">0</span>%</p>
-		<input id="VolSlider" type="range" min="0" max="100" step="2.5" defaultValue="25" onChange="ustawVol(this)" />
+		<input id="VolSlider" type="range" min="0" max="100" step="2.5" defaultValue="25" onChange="ustawVolSlider(this)" />
 	</div>
 	<div id="klawisze"></div>
 	
