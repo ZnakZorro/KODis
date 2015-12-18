@@ -1,10 +1,7 @@
 @charset "UTF-8";
 /* Base page styles */
 body {
-	background-color: #ccc;
-	/*background-color: #f0f0f0;*/
-	/*background: url(papier1.jpg);*/
-}
+background-color: #f0f0f0;
 }
 /* Base Button Style */
 button {
