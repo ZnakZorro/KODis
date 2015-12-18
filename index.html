@@ -297,7 +297,7 @@ var pierwszy = true;
 			var kod = ten.dataset.kod;
 			var json=JSON.parse(kod);
 			
-			console.log(json.method);
+			//
 			if (json.method == 'System.Reboot' || json.method == 'System.Shutdown'){
 				var c= confirm('Jestes pewny!!!');
 				if (c==false) return;
@@ -318,7 +318,9 @@ var pierwszy = true;
 				document.getElementById("VolVal").innerHTML='Stop ';
 			} else {
 				localStorage.setItem("___pi___radio_vol",vol);
-				volume= Math.round(Math.log10(vol)*50);
+				//volume= Math.round(Math.log10(vol)*50);
+				volume= Math.round(Math.sqrt(vol)*10);
+				//console.log(volume);
 				ustawVol(volume,vol);
 			}
 		}
@@ -372,7 +374,7 @@ var pierwszy = true;
 	}
 		
 	function foo(ret){
-		console.log(ret);
+		//console.log(ret);
 		var info = document.getElementById('info')
 		var req = ret.result;
 		//console.log(req,typeof(req));
@@ -382,29 +384,29 @@ var pierwszy = true;
 			if (typeof(req) == 'string') info.innerHTML += ' '+req+' ';
 			if (typeof(req) == 'number') info.innerHTML += ' '+req+' ';
 			
-			if (req.speed) {info.innerHTML += req.speed; console.log(req.speed);}// else info.innerHTML += ' ~ ';
+			if (req.speed) {info.innerHTML += req.speed; }// else info.innerHTML += ' ~ ';
 			
 			if (req.item){
-				if (req.item.label != null){info.innerHTML += req.item.label+' '; console.log(req.item.label);}
+				if (req.item.label != null){info.innerHTML += req.item.label+' ';}
 			}
 			if (req.addon){
 				 if (req.addon.addonid) {info.innerHTML += req.addon.addonid+' ';}
 			}
 			if (req.artists){
 				for (var a in req.artists){
-					console.log(req.artists[a]['artist'],req.artists[a]['label'], req.artists[a]);
+					//console.log(req.artists[a]['artist'],req.artists[a]['label'], req.artists[a]);
 					info.innerHTML += req.artists[a]['artist']+' / ';
 				 }
 			}
 			if (req.albums){
 				for (var a in req.albums){
-					console.log(req.albums[a]['artist'][0],req.albums[a]['label'], req.albums[a]);
+					//console.log(req.albums[a]['artist'][0],req.albums[a]['label'], req.albums[a]);
 					info.innerHTML += req.albums[a]['label']+' / ';
 				 }
 			}
 			if (req.songs){
 				for (var a in req.songs){
-					console.log(req.songs[a]['artist'][0],req.songs[a]['label'], req.songs[a]);
+					//console.log(req.songs[a]['artist'][0],req.songs[a]['label'], req.songs[a]);
 					info.innerHTML += req.songs[a]['label']+' / ';
 				 }
 			}
@@ -421,7 +423,7 @@ var pierwszy = true;
 
 		function execFavourities(ten){
 			var windowparameter = ten.dataset.windowparameter;
-			console.log('windowparameter=',decodeURIComponent(windowparameter),windowparameter);
+			//console.log('windowparameter=',decodeURIComponent(windowparameter),windowparameter);
 			
 var query='{"jsonrpc":"2.0","method":"Files.GetDirectory","id":"1","params":["'+windowparameter+'"}]';
 sendToKodi(query);
@@ -446,7 +448,7 @@ http://82.145.73.90/jsonrpc?request={"jsonrpc":"2.0","method":"Files.GetDirector
 		function showFavourites(favs){
 			var favdiv = document.getElementById('favourites');
 			favdiv.style.display='block';
-			favdiv.innerHTML ='<h4>Favourities</h4>';
+			favdiv.innerHTML ='<h4 onClick="document.getElementById(\'favourites\').style.display=\'none\'">Favourities</h4>';
 			for (var f in favs){
 				//console.log(favs[f]);
 				//console.log(favs[f]['windowparameter']);
