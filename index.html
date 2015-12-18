@@ -5,12 +5,16 @@
 <title>KODis</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="shortcut icon" href="data:image/x-icon;base64,AAABAAEAEBAAAAEACABoBQAAFgAAACgAAAAQAAAAIAAAAAEACAAAAAAAAAEAAAAAAAAAAAAAAAEAAAAAAAAsIRcAAAAAABQPCwAQDQgAJBwTACUcEwALCQIAHhcPAAoHBgAGBQMAGhQOAAICAgADAgIAKB4VABAMCQAhGREACQcFAAoIAwAdFhAABwUCAC4jGAAnHhQADwwIACMbEwAQDAgACwkHAA0KBQAdFg8ABQQDABURCwAWEQsAKiAWACMbEgAMCQYAIBgRABgTDQAFBAIABAMEAAYEAgARDgkAJh0UAB8YEAAEAwMALSIXAOGvMQANCwcAIhoSAAsIBgAbFQ4ABwUFABgSDQAUEAoAAAABABANCQARDQkADgsGAA4KCAALCQMAHhcQAAwJAwAGBQQALiQYAAcFBAAXEgwAKyEXAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAIi4FDUArAAEsHxQ9Kx8oIBs6DxcFBAEsLCwgFRUEDzojCjASAQEsLCwsLAcpOjAjMx4/MgEsLCwsLCwBMj8dAg42NgEnASwsLCwBODY1GBYZIQEsLSEDLCwBMQEBLAgvPgEsLBABPDcsJQEBLCwsCQEsLCwLARoJHCoBLCwsLCwsLCwsNAEsOwwmLCwsLCwsASwsLAEBLCw5AREsLCwsLAEBLCwBASwsLDkBESwsLAEBAQEsAQEsLCwsBgEkLAEBAQEBAQEBLCwsLCwTAQEBAQEBAQEBASwsLCwsLAEBAQEBAQEBAQEBLCwsLAEBAQEBAQEBAQEBAQEsLAEBAQEBAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=" />
-<!--link rel="stylesheet" href="klawisze-ciemne.css"-->
 <link rel="stylesheet" href="kodis.css">
+
+<!--
+<link rel="stylesheet" href="klawisze-ciemne.css">
+<link rel="stylesheet" href="klawisze-papier.css">
+-->
 <link rel="stylesheet" href="klawisze-papier.css">
 
 <style>
-button.vol {width:14%;}
+
 </style>
 <script type="text/javascript" charset="utf-8" src="cordova.js"></script>
 <script id="kodisrc" type="text/javascript" async="true"></script>
@@ -19,127 +23,132 @@ button.vol {width:14%;}
 var radios = 
 [
 
-    {
-        "title": "TOK FM",
-        "stream": "http://poznan5-1.radio.pionier.net.pl:8000/radiotok.ogg",
-    },
-    {
-        "title": "RMF Classic",
-        "stream": "http://31.192.216.5:8000/rmf_classic"
-    },
-    {
-        "title": "Jazz Ballads",
-        "stream": "http://pub6.jazzradio.com:80/jr_jazzballads_aacplus?d1e1bfa0a67fafc4764954be"
-    },
-    {
-        "title": "Piano Trios",
-        "stream": "http://pub1.jazzradio.com:80/jr_pianotrios_aacplus?d1e1bfa0a67fafc4764954be"
-    },
-    {
-        "title": "Vocal Legend",
-        "stream": "http://pub1.jazzradio.com:80/jr_vocallegends_aacplus?d1e1bfa0a67fafc4764954be"
-    },
-    {
-        "title": "Gypsy Jazz",
-        "stream": "http://pub1.jazzradio.com:80/jr_gypsyjazz?d1e1bfa0a67fafc4764954be"
-    },
-    {
-        "title": "Guitar Jazz",
-        "stream": "http://pub6.jazzradio.com:80/jr_guitarjazz?d1e1bfa0a67fafc4764954be"
-    },
-    {
-        "title": "Guitar Acoustic",
-        "stream": "http://streaming.radionomy.com/Acoustic-Guitar"
-    },
-    {
-        "title": "PR-1 Jedynka",
-        "stream": "mms://stream.polskieradio.pl/program1"
-    },
-    {
-        "title": "PR-2 Dwójka",
-        "stream": "mms://stream.polskieradio.pl/program2"
-    },
-    {
-        "title": "PR-3 Trójka",
-        "stream": "mms://stream.polskieradio.pl/program3"
-    },
-    {
-        "title": "PR-4 Czwórka",
-        "stream": "mms://stream.polskieradio.pl/program4"
-    },
-    {
-        "title": "Szczecin Radio",
-        "stream": "http://stream4.nadaje.com:11986/prs.aac"
-    },
+	{"title": "Radio"},
+	{
+		"title": "TOK FM",
+		"stream": "http://poznan5-1.radio.pionier.net.pl:8000/radiotok.ogg",
+	},
+	{
+		"title": "RMF Classic",
+		"stream": "http://31.192.216.5:8000/rmf_classic"
+	},
+	{
+		"title": "Jazz Ballads",
+		"stream": "http://pub6.jazzradio.com:80/jr_jazzballads_aacplus?d1e1bfa0a67fafc4764954be"
+	},
+	{
+		"title": "Piano Trios",
+		"stream": "http://pub1.jazzradio.com:80/jr_pianotrios_aacplus?d1e1bfa0a67fafc4764954be"
+	},
+	{
+		"title": "Vocal Legend",
+		"stream": "http://pub1.jazzradio.com:80/jr_vocallegends_aacplus?d1e1bfa0a67fafc4764954be"
+	},
+	{"title": "Inne"},
+	{
+		"title": "Gypsy Jazz",
+		"stream": "http://pub1.jazzradio.com:80/jr_gypsyjazz?d1e1bfa0a67fafc4764954be"
+	},
+	{
+		"title": "Guitar Jazz",
+		"stream": "http://pub6.jazzradio.com:80/jr_guitarjazz?d1e1bfa0a67fafc4764954be"
+	},
+	{
+		"title": "Guitar Acoustic",
+		"stream": "http://streaming.radionomy.com/Acoustic-Guitar"
+	},
+	{
+		"title": "PR-1 Jedynka",
+		"stream": "mms://stream.polskieradio.pl/program1"
+	},
+	{
+		"title": "PR-2 Dwójka",
+		"stream": "mms://stream.polskieradio.pl/program2"
+	},
+	{
+		"title": "PR-3 Trójka",
+		"stream": "mms://stream.polskieradio.pl/program3"
+	},
+	{
+		"title": "PR-4 Czwórka",
+		"stream": "mms://stream.polskieradio.pl/program4"
+	},
+	{
+		"title": "Szczecin Radio",
+		"stream": "http://stream4.nadaje.com:11986/prs.aac"
+	},
 
-    {
-        "title": "Sax4Love",
-        "stream": "http://streaming.radionomy.com/Sax4Love"
-    },
-    {
-        "title": "Jazz APh",
-        "stream": "http://50.7.173.162:8014/"
-    },
-    {
-        "title": "Classical APh",
-        "stream": "http://50.7.173.162:8012/"
-    },
-    {
-        "title": "Smooth lounge",
-        "stream": "http://listen.radionomy.com/the-smooth-lounge"
-    },
-    {
-        "title": "Złote Przeboje",
-        "stream": "http://mainstream.radioagora.pl/tuba9-1.mp3"
-    },
-    {
-        "title": "PL-Smooth Jazz",
-        "stream": "http://178.32.161.112:5700"
-    },
-    {
-        "title": "PL - JAZZ",
-        "stream": "http://91.121.92.167:8700"
-    },
-    {
-        "title": "PL-Klasycznie",
-        "stream": "http://91.121.92.167:8900"
-    },
-    {
-        "title": "Niezapomniane",
-        "stream": "http://178.32.161.112:9100"
-    },
-    {
-        "title": "Najwieksze 80",
-        "stream": "http://178.32.161.113:9200"
-    },
-    {
-        "title": "Najpiękniejsze",
-        "stream": "http://mp3.polskieradio.pl:8020"
-    },
-    {
-        "title": "Chopin",
-        "stream": "http://pub8.classicalradio.com:80/cr_chopin?829ca7436799f18bda7e56f8"
-    },
-    {
-        "title": "Piano",
-        "stream": "http://pub8.classicalradio.com:80/cr_pianoworks?829ca7436799f18bda7e56f8"
-    },
-    {
-        "title": "Chóry",
-        "stream": "http://pub7.classicalradio.com:80/cr_choralworks?829ca7436799f18bda7e56f8"
-    },
-    {
-        "title": "Romantic",
-        "stream": "http://pub7.classicalradio.com:80/cr_romanticperiod?829ca7436799f18bda7e56f8"
-    },
-    {
-        "title": "Opera",
-        "stream": "http://pub8.classicalradio.com:80/cr_operas?829ca7436799f18bda7e56f8"
-    },
-    {
-        "title": "Relax",
-        "stream": "http://pub8.classicalradio.com:80/cr_classicalrelaxation?829ca7436799f18bda7e56f8"
-    }
+	{
+		"title": "Sax4Love",
+		"stream": "http://streaming.radionomy.com/Sax4Love"
+	},
+	{
+		"title": "Jazz APh",
+		"stream": "http://50.7.173.162:8014/"
+	},
+	{
+		"title": "Classical APh",
+		"stream": "http://50.7.173.162:8012/"
+	},
+	{
+		"title": "Smooth lounge",
+		"stream": "http://listen.radionomy.com/the-smooth-lounge"
+	},
+	{
+		"title": "Złote Przeboje",
+		"stream": "http://mainstream.radioagora.pl/tuba9-1.mp3"
+	},
+	{
+		"title": "PL-Smooth Jazz",
+		"stream": "http://178.32.161.112:5700"
+	},
+	{
+		"title": "PL - JAZZ",
+		"stream": "http://91.121.92.167:8700"
+	},
+	{
+		"title": "PL-Klasycznie",
+		"stream": "http://91.121.92.167:8900"
+	},
+	{
+		"title": "Niezapomniane",
+		"stream": "http://178.32.161.112:9100"
+	},
+	{
+		"title": "Najwieksze 80",
+		"stream": "http://178.32.161.113:9200"
+	},
+	{
+		"title": "Najpiękniejsze",
+		"stream": "http://mp3.polskieradio.pl:8020"
+	},
+	{"title": "Classical radio"},
+	{
+		"title": "Chopin",
+		"stream": "http://pub8.classicalradio.com:80/cr_chopin?829ca7436799f18bda7e56f8"
+	},
+	{
+		"title": "Piano",
+		"stream": "http://pub8.classicalradio.com:80/cr_pianoworks?829ca7436799f18bda7e56f8"
+	},
+	{
+		"title": "Chóry",
+		"stream": "http://pub7.classicalradio.com:80/cr_choralworks?829ca7436799f18bda7e56f8"
+	},
+	{
+		"title": "Romantic",
+		"stream": "http://pub7.classicalradio.com:80/cr_romanticperiod?829ca7436799f18bda7e56f8"
+	},
+	{
+		"title": "Opera",
+		"stream": "http://pub8.classicalradio.com:80/cr_operas?829ca7436799f18bda7e56f8"
+	},
+	{
+		"title": "Relax",
+		"stream": "http://pub8.classicalradio.com:80/cr_classicalrelaxation?829ca7436799f18bda7e56f8"
+	},
+	{"title": "Koniec"}
+
 ];
 
 
@@ -181,7 +190,7 @@ var config=[
 
 var wybranyKomputer = 0;
 var wybraneRadio=0;
-
+var pierwszy = true;
 
 
 
@@ -200,9 +209,11 @@ var wybraneRadio=0;
 			ustawActive();
 			//getInfo();
 			ustawDevices();
-			var vol=25;
-			document.getElementById("VolSlider").value=vol;
-			document.getElementById("VolVal").innerHTML=vol;
+			var volume=25;
+		if (localStorage.getItem("___pi___radio_vol")) volume = localStorage.getItem("___pi___radio_vol");
+			
+			document.getElementById("VolSlider").value=volume;
+			document.getElementById("VolVal").innerHTML=volume;
 			window.addEventListener("resize", function(){ekraninfo()}, true);
 			ekraninfo();
 	}	// Dom ready
@@ -227,29 +238,38 @@ var wybraneRadio=0;
 		klawisze.innerHTML='';
 		// Events for klawisze radia
 		for (var a in radios){
-			var klaw = document.createElement('button');
+			//console.log(radios[a]['stream']);
+			if (radios[a]['stream']) {
+				var klaw = document.createElement('button');
 				klaw.innerHTML=radios[a]['title'];
 				klaw.setAttribute('data-radio',parseInt(a)); 
 				klaw.addEventListener('click', radioOn, false); 
+				} else{
+				var klaw = document.createElement('p');
+				klaw.innerHTML=radios[a]['title'];
+				klaw.className='category';
+				}
 			klawisze.appendChild(klaw);	
 		}
 		if (wybraneRadio != 0) dajInfoRadio('radio='+wybraneRadio,true);
 		
 	}
-
-function preparujWpis(wpis_wiadomosc){
-	var infoOut  = '';
-	//RMF Classic: Daniel Bloom - Tulipany [playing] #2/24 0:00/0:00 (0%) volume: 0% repeat: off random: off single: off consume: off
-	var arr = wpis_wiadomosc.split('#');
-	if (arr[0]) infoOut = '<span>'+arr[0]+'</span>';
-	if (arr[1]){
-		var ar = arr[1].split('volume: ');
-		var v = ar[1].slice(0,3);
-		infoOut += ' &nbsp; <span>'+v+'</span>';
+	
+/*	
+	var wpis_wiadomosc='';
+	function preparujWpis(wpis_wiadomosc){
+		var infoOut  = '';
+		//RMF Classic: Daniel Bloom - Tulipany [playing] #2/24 0:00/0:00 (0%) volume: 0% repeat: off random: off single: off consume: off
+		var arr = wpis_wiadomosc.split('#');
+		if (arr[0]) infoOut = '<span>'+arr[0]+'</span>';
+		if (arr[1]){
+			var ar = arr[1].split('volume: ');
+			var v = ar[1].slice(0,3);
+			infoOut += ' &nbsp; <span>'+v+'</span>';
+		}
+		return infoOut;
 	}
-	return infoOut;
-}
-
+*/
 
 ///////////////////////////////
 	Element.prototype.remove = function() {
@@ -264,33 +284,54 @@ function preparujWpis(wpis_wiadomosc){
 		}
 	}
 
-
-	var pierwszy = true;
-	
-/*
-	function getInfo(){
-		dajInfoRadio('info=radio',true);
-		setTimeout(function(){getInfo();},10000);
-	}
-*/	
-		function ustawVolSlider(ten){
-			var vol = parseInt(ten.value);
-			console.log(vol);
-			vol= Math.round(10*Math.sqrt(vol));
-			console.log(vol);
-			ustawVol(vol);
-		}
-	
-
-		function ustawVol(vol){
+		
+		function sendToKodi(query){
 			var czas = (new Date()).getTime();
 			var protokol = config[wybranyKomputer]['protokol'];
 			var ip = config[wybranyKomputer]['ip'];
-			var url = protokol+ip+'/jsonrpc?request={"jsonrpc":"2.0","id":"1","method":"Application.SetVolume","params":{"volume":'+vol+'}}, "id": "AudioGetItem"}&t='+czas+'&callback=foo';
+			var url = protokol+ip+'/jsonrpc?request='+query+'&t='+czas+'&callback=foo';		
+			kodi(url);
+		}
+
+		function radiokody(ten){
+			var kod = ten.dataset.kod;
+			var json=JSON.parse(kod);
 			
+			console.log(json.method);
+			if (json.method == 'System.Reboot' || json.method == 'System.Shutdown'){
+				var c= confirm('Jestes pewny!!!');
+				if (c==false) return;
+			}
+			
+			var czas = (new Date()).getTime();
+			var protokol = config[wybranyKomputer]['protokol'];
+			var ip = config[wybranyKomputer]['ip'];
+			var url = protokol+ip+'/jsonrpc?request='+kod+'&t='+czas+'&callback=foo';
+			
+			kodi(url);
+		}
+
+		function ustawVolSlider(ten){
+			var vol = parseInt(ten.value);
+			if(vol==0) {
+				sendToKodi('{"jsonrpc":"2.0","method":"Player.Stop","params":{"playerid":0},"id":1}');
+				document.getElementById("VolVal").innerHTML='Stop ';
+			} else {
+				localStorage.setItem("___pi___radio_vol",vol);
+				volume= Math.round(Math.log10(vol)*50);
+				ustawVol(volume,vol);
+			}
+		}
+	
+
+		function ustawVol(volume,vol){
+			var czas = (new Date()).getTime();
+			var protokol = config[wybranyKomputer]['protokol'];
+			var ip = config[wybranyKomputer]['ip'];
+			var url = protokol+ip+'/jsonrpc?request={"jsonrpc":"2.0","id":"1","method":"Application.SetVolume","params":{"volume":'+volume+'}}, "id": "AudioGetItem"}&t='+czas+'&callback=foo';		
 			kodi(url);	
 			document.getElementById("VolVal").innerHTML=vol;
-			document.getElementById("glosnosc").innerHTML=vol;
+			//document.getElementById("glosnosc").innerHTML=volume;
 		}
 
 
@@ -309,6 +350,8 @@ function preparujWpis(wpis_wiadomosc){
 	setTimeout(function(){kodinfo();},1000);
 	setInterval(function(){kodinfo();},15000);
 
+	
+	/*MAIN FUNCTION qqqqqqq*/
 	function kodi(url) {
 		//var url = encodeURIComponent(url);
 		if (document.getElementById('kodis')) {
@@ -321,18 +364,20 @@ function preparujWpis(wpis_wiadomosc){
 		//console.log(url);
 		script.src = url;
 		//console.log(script.src)
-		var sc = document.getElementsByTagName('script')[0]; 	
-		sc.parentNode.insertBefore(script, sc);
+		var sc = document.getElementsByTagName('script')[0];
+		try {
+			sc.parentNode.insertBefore(script, sc);
+		} catch(e){console.log(e);}
 		pierwszy=true;
 	}
 		
 	function foo(ret){
-		//console.log(ret);
+		console.log(ret);
 		var info = document.getElementById('info')
 		var req = ret.result;
 		//console.log(req,typeof(req));
 		if(req){
-			info.innerHTML = '~';
+			info.innerHTML = '~ ';
 			
 			if (typeof(req) == 'string') info.innerHTML += ' '+req+' ';
 			if (typeof(req) == 'number') info.innerHTML += ' '+req+' ';
@@ -363,20 +408,60 @@ function preparujWpis(wpis_wiadomosc){
 					info.innerHTML += req.songs[a]['label']+' / ';
 				 }
 			}
+			if (req.favourites){
+				showFavourites(req.favourites);
+			}
+			
 			
 			if (pierwszy) setTimeout(function(){kodinfo(); pierwszy=false;},3000);
 		}
 	}
 
 /*QQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQ*/	
-	var wpis_wiadomosc='';
-	
+
+		function execFavourities(ten){
+			var windowparameter = ten.dataset.windowparameter;
+			console.log('windowparameter=',decodeURIComponent(windowparameter),windowparameter);
+			
+var query='{"jsonrpc":"2.0","method":"Files.GetDirectory","id":"1","params":["'+windowparameter+'"}]';
+sendToKodi(query);
+
+// get-info
+//var query='[{"jsonrpc":"2.0","method":"Player.GetProperties","params":[0,["playlistid","speed","position","totaltime","time","percentage","shuffled","repeat","canrepeat","canshuffle","canseek","partymode"]],"id":30},{"jsonrpc":"2.0","method":"Player.GetItem","params":[0,["title","thumbnail","file","artist","genre","year","rating","album","track","duration","playcount","dateadded","episode","artistid","albumid","tvshowid","fanart"]],"id":31}]';
+//sendToKodi(query);
+
+
+/*
+http://82.145.73.90/jsonrpc?request={"jsonrpc":"2.0","id":"1","method":"Input.ExecuteAction","params":{"action":"plugin://plugin.video.tvbox/?hostingTab=%5b%5d&icon=http%3a%2f%2fpub6.jazzr…ub6.jazzradio.com%3a80%2fjr_jazzballads_aacplus%3fd1e1bfa0a67fafc4764954be"}}
+http://82.145.73.90/jsonrpc?request={"jsonrpc":"2.0","id":"1","method":"Player.Open","params":{"action":"plugin://plugin.video.tvbox/?hostingTab=%5b%5d&icon=http%3a%2f%2fpub6.jazzr…ub6.jazzradio.com%3a80%2fjr_jazzballads_aacplus%3fd1e1bfa0a67fafc4764954be"}}
+http://82.145.73.90/jsonrpc?request={"jsonrpc":"2.0","method":"Files.GetDirectory","id":"1450440299046","params":["plugin://plugin.video.tvbox/?title=Christmas+Classics&url=http%3A%2F%2F107.155.126.58%3A8710%2F%3B&hostingTab=%5B%5D&path=radiofm&play_m3u=1&icon=http%3A%2F%2F107.155.126.58%3A8710%2F%3B","video",["title","file","mimetype","thumbnail"],{"method":"label","order":"ascending","ignorearticle":true}]}
+http://82.145.73.90/jsonrpc?request={"jsonrpc":"2.0","method":"Files.GetDirectory","id":"1450440299046","params":["plugin://plugin.video.tvbox/?title=Christmas+Classics&url=http%3A%2F%2F107.155.126.58%3A8710%2F%3B&hostingTab=%5B%5D&path=radiofm&play_m3u=1&icon=http%3A%2F%2F107.155.126.58%3A8710%2F%3B"}]
+*/
+
+
+			
+
+		}
+
+		function showFavourites(favs){
+			var favdiv = document.getElementById('favourites');
+			favdiv.style.display='block';
+			favdiv.innerHTML ='<h4>Favourities</h4>';
+			for (var f in favs){
+				//console.log(favs[f]);
+				//console.log(favs[f]['windowparameter']);
+				//favdiv.innerHTML += req.favourites[f]['title']+' / '+req.favourites[f]['thumbnail']+' / '+favs[f]['windowparameter'];
+				favdiv.innerHTML += '<p onClick="execFavourities(this);" data-windowparameter="'+favs[f]['windowparameter']+'">'+favs[f]['title']+'</p>';				
+			 }
+		}
+
+
 	
 	// włącz radio wg numeru
 	function radioOn(){
 		dataRadio = this.dataset.radio;	
 		var intRadio = parseInt(dataRadio);
-		document.getElementById('info_wiadomosc').innerHTML = '';
+		//document.getElementById('info').innerHTML = '';
 			var czas = (new Date()).getTime();
 			var protokol = config[wybranyKomputer]['protokol'];
 			var ip = config[wybranyKomputer]['ip'];
@@ -485,63 +570,93 @@ function resetConfig(){
 }
 
 
-
-
-
 function ekraninfo(){
 	var ew = screen.width;
 	var eh = screen.height;
 	var ww = window.innerWidth;
 	var wh = window.innerHeight;	
-	console.log(ew,eh,ww,wh);
 	var inf = document.getElementById('ekraninfo');
-	inf.innerHTML = 'W='+ww+' H='+wh;
+	//inf.innerHTML = 'W='+ww+' H='+wh;
+	//console.log(ew,eh,ww,wh);
 }
 
 </script>
 </head>
 
 <body onload="onLoad();" >
-
-	<h3 style="float:left;"><span id="wybranyKomputer">Internet</span> [<span id="glosnosc"></span>%] <span id="wybrane">Radio</span></h3>
-	<div class="pole" id="info"></div>
-
-	<div style="clear:both; width:100%;">
-
-	
+<div class="row">
+	<div id="tytul"><span id="wybranyKomputer">Internet</span> :: <span id="wybrane">Radio</span></div>
+	<div id="info" ></div>
+</div>
+	<!--div style="clear:both; width:100%;">	
 		<button class="klaw admin vol glos" onClick="ustawVol(0);">0</button>
 		<button class="klaw admin vol"      onClick="ustawVol(33)"><b>10</b></button>
 		<button class="klaw admin vol"      onClick="ustawVol(66)"><b>25</b></button>
 		<button class="klaw admin vol"      onClick="ustawVol(80)"><b>50</b></button>
 		<button class="klaw admin vol"      onClick="ustawVol(90)"><b>75</b></button>
 		<button class="klaw admin vol glos" onClick="ustawVol(100)">100</button>
-
-	</div>
+	</div-->
 	
 	<div style="clear:both; width:100%;">
-		<p class="note">Volume: <span id="VolVal">0</span>%</p>
+		<p class="note">Głosnośc: <span id="VolVal">0</span>%</p>
 		<input id="VolSlider" type="range" min="0" max="100" step="2.5" defaultValue="25" onChange="ustawVolSlider(this)" />
 	</div>
-	<div id="klawisze"></div>
-	
-
-
-	<div id="info_wiadomosc"></div>
 	
 	<div class="div_klawiszy">
+		<button onClick='radiokody(this);' data-kod='{"jsonrpc":"2.0","method":"Player.PlayPause","params":{"playerid":0},"id":1}' class='admin'> Play/Pause </button> 
+		<button onClick='radiokody(this);' data-kod='{"jsonrpc":"2.0","method":"Player.GetItem","params":{"properties":["title","thumbnail","file","fanart","streamdetails"],"playerid":0},"id":"AudioGetItem"}' class='admin'> Co jest grane </button> 
+		<button onClick='radiokody(this);' data-kod='{"jsonrpc":"2.0","method":"Favourites.GetFavourites","params":{"properties":["window","path","thumbnail","windowparameter"]},"id":1}' class='admin'> Faworyty </button> 
+	</div>
+		
+	<div id="favourites" style="dispaly:none;"></div>
+	<div id="klawisze"></div>
+	
+	
+		
+	<div style="float:right;" id="devices"></div>
+
+	
+	<div class="div_klawiszy" style="margin-top:2em;">
 		<button class="klaw admin" onClick="mpcUpdate()">MPC update</button>
 		<button class="klaw admin" onClick="showConfigUpdate()">Config</button>
 		<div id="config_update" style="display:none;"></div>
 		<div id="mpc_update" style="display:none;"></div>
 	</div>
-<br />
-	<div style="float:right;" id="devices"></div>
-<br />
-<div class="pole" id="debug"></div>
-<div class="pole" id="ekraninfo"></div>
-<br /><br /><br /><br /><br />
+
+	<div class="pole" id="debug"></div>
+	<div class="pole" id="ekraninfo"></div>
+
+	<div class="div_klawiszy" style="margin-top:2em;">
+		<button onClick='radiokody(this);' data-kod='{"jsonrpc":"2.0","id":"1","method":"System.Reboot"}' class='admin'> Reboot </button> 
+		<button onClick='radiokody(this);' data-kod='{"jsonrpc":"2.0","id":"1","method":"System.Shutdown"}' class='admin'> Shutdown </button> 
+
+		<button onClick='radiokody(this);' data-kod='{"jsonrpc":"2.0","id":"1","method":"Player.Open","params":{"item":{"directory":"storage/pictures/###2015/"}}}' class='admin'> ###2015 </button> 
+		<button onClick='radiokody(this);' data-kod='{"jsonrpc":"2.0","id":"1","method":"Addons.GetAddonDetails","params":{"addonid":"plugin.audio.aaaaa"}}' class='admin'> aaa info </button> 
+		<button onClick='radiokody(this);' data-kod='{"jsonrpc":"2.0","id":"1","method":"Addons.ExecuteAddon","params":{"addonid":"plugin.audio.aaaaa"}}' class='admin'> aaa exe </button> 
+		<button onClick='radiokody(this);' data-kod='{"jsonrpc":"2.0","id":"1","method":"Addons.GetAddonDetails","params":{"addonid":"plugin.video.tvbox"}}' class='admin'> TvBox </button> 
+		<button onClick='radiokody(this);' data-kod='{"jsonrpc": "2.0", "method": "AudioLibrary.GetArtists", "params": { "limits": { "start" : 0, "end": 75 }, "properties": [ "thumbnail", "fanart", "born", "formed", "died", "disbanded", "yearsactive", "mood", "style", "genre" ], "sort": { "order": "ascending", "method": "artist", "ignorearticle": true } }, "id": 1}' class='admin'> Artist </button> 
+		<button onClick='radiokody(this);' data-kod='{"jsonrpc": "2.0", "method": "AudioLibrary.GetAlbums", "params": { "limits": { "start" : 0, "end": 50 }, "properties": ["playcount", "artist", "genre", "rating", "thumbnail", "year", "mood", "style"], "sort": { "order": "ascending", "method": "album", "ignorearticle": true } }, "id": "libAlbums"}' class='admin'> Albums </button> 
+		<button onClick='radiokody(this);' data-kod='{"jsonrpc": "2.0", "method": "AudioLibrary.GetSongs", "params": { "limits": { "start" : 0, "end": 25 }, "properties": [ "artist", "duration", "album", "track" ], "sort": { "order": "ascending", "method": "track", "ignorearticle": true } }, "id": "libSongs"}' class='admin'> Songs </button> 
+
+<hr>		
+<button onClick='radiokody(this);' data-kod='[{"jsonrpc":"2.0","method":"Files.GetSources","params":["video"],"id":8},{"jsonrpc":"2.0","method":"Files.GetSources","params":["music"],"id":9},{"jsonrpc":"2.0","method":"Addons.GetAddons","params":["xbmc.addon.audio","unknown",true,["path","name"]],"id":10},{"jsonrpc":"2.0","method":"Addons.GetAddons","params":["xbmc.addon.video","unknown",true,["path","name"]],"id":11}]' class='admin'> Przeglad </button> 
+<button onClick='radiokody(this);' data-kod='{"jsonrpc":"2.0","method":"Addons.GetAddons","params":["xbmc.addon.video","unknown",true,["path","name"]],"id":11}' class='admin'> addons Video </button> 
+<button onClick='radiokody(this);' data-kod='{"jsonrpc":"2.0","method":"Addons.GetAddons","params":["xbmc.addon.image","unknown",true,["path","name"]],"id":44}' class='admin'> addons Images </button> 
+
+<button onClick='radiokody(this);' data-kod='{"jsonrpc":"2.0","method":"Files.GetDirectory","id":"1450434140412","params":["plugin://plugin.video.tvbox","video",["title","file","mimetype","thumbnail"],{"method":"label","order":"ascending","ignorearticle":true}]}' class='admin'> TVBoxLive </button> 
+<button onClick='radiokody(this);' data-kod='{"jsonrpc":"2.0","method":"Files.GetDirectory","id":"1450434251805","params":["plugin://plugin.video.tvbox/?mode=radiofm","video",["title","file","mimetype","thumbnail"],{"method":"label","order":"ascending","ignorearticle":true}]}' class='admin'> InternetRadio </button> 
+<button onClick='radiokody(this);' data-kod='{"jsonrpc":"2.0","method":"Files.GetDirectory","id":"1450434385547","params":["plugin://plugin.video.tvbox/?path=radiofm&open_m3u_list=1&filename=CLASSICAL_RADIO.m3u","video",["title","file","mimetype","thumbnail"],{"method":"label","order":"ascending","ignorearticle":true}]}' class='admin'> ClassicalRadio </button> 
+<button onClick='radiokody(this);' data-kod='{"jsonrpc":"2.0","method":"Files.GetDirectory","id":"1450434440704","params":["plugin://plugin.audio.jazzradio.com","music",["title","file","mimetype","thumbnail"],{"method":"label","order":"ascending","ignorearticle":true}]}' class='admin'> JazzRadio </button> 
 
 
+
+<button onClick='radiokody(this);' data-kod='{"jsonrpc":"2.0","method":"Favourites.GetFavourites","params":{"properties":["window","path","thumbnail","windowparameter"]},"id":1}' class='admin'> Favourities </button> 
+		
+	</div>
+
+
+<!--
+-->
 
 </body>
 </html>

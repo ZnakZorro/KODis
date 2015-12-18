@@ -5,37 +5,58 @@
 }
 	
 body{
-	font-size:15px;
+	font-size:16px;
 	font-family:verdana,sans-serif; 
 	margin:0.5rem;
 }
+.row {width:100%; display:block;}
+div#tytul,div#info {float:left; min-height: 3.5rem; line-height: 2em;}
+div#tytul {width:30%;font-size:1.15em; font-weight:normal;}
+div#info {width:69%;}
 
-h3 {font-size:1.5em; font-weight:normal;}
 .pole {width:100%; clear:both; margin:1px solid white;}
 .div_klawiszy {margin-top:1rem;}
 #wybrane {font-weight:bold;}
 #info_wiadomosc {margin:0.3rem 0; padding:0.3rem 1rem; min-height:2.0rem; border:1px solid white;} 
 #mpc_update	{margin:1em 2em; padding:1em;font-family: monospace;font-size: 0.8em;}
 #config_input {width:15.5em;}
-#devices {min-width:99%;}
+#devices {width:100%;}
 input {font-size:1.2em; padding:4px;margin:8px;}
-div.configs, div#klawisze {clear:both;display:block; margin-bottom:0.5em;}
+div.configs, div#klawisze {display:block; margin-bottom:0.5em;}
 p.note {margin-bottom:-0.4em;}
 #VolSlider {width:99%; clear:both; margin:1em 0 2em 0;}
 
+#favourites {
+    float: left;
+    /*width: 50%;*/
+    background: #DDD;
+    margin: 1em;
+    padding: 1em;
+    line-height: 2em;
+    cursor: pointer;
+	display:none;
+	position: relative;
+}
+
+button.vol {width:14%;}
+p.category {
+    background: #eee;
+    padding: 0.2em 1em;
+    margin: 0 1em;
+}
 button {
- 	font-size:1em;
+ 	font-size:1.15em;
 	line-height:1.5em;
 	height:3.0em;
 	min-width: 4em;
-	width:23%;
+	width:18%;
 	display: inline-block;
 	position: relative;
 	margin: 1%;
 	padding: 0.5%;
 }
 button.vol {height:2.5em;padding: 0;}
-button.admin {width:18%; color:#666;}
+button.admin {line-height: 0.8em; height:2.2em; border-color:white; margin-top:0.5em; margin-bottom:0.5em;}
 button.right{float:right; margin-right:2em;}
 button.mini{width:2.2em; }
 
@@ -45,7 +66,7 @@ input[type=range] {
   -webkit-appearance: none;
   margin: 18px 0;
   width: 99%;
-  /*background: #444;*/
+  background: transparent;
 }
 input[type=range]:focus {
   outline: none;
@@ -70,16 +91,7 @@ input[type=range]::-webkit-slider-thumb {
   cursor: pointer;
   -webkit-appearance: none;
   border-radius: 3px;
-	
-/*	
-  box-shadow: 1px 1px 1px #000000, 0px 0px 1px #0d0d0d;
-  border: 1px solid #000000;
-    background: #369;
- */ 
-
-  background: #444;
-
-  
+  background: #444; 
 }
 input[type=range]:focus::-webkit-slider-runnable-track {
   /*background: #036;*/
@@ -89,16 +101,15 @@ input[type=range]:focus::-webkit-slider-runnable-track {
 
 @media screen and (min-width: 1199px) {
 	body {font-size:17px;}
-	h3 {font-size:1.7em;}
 	button {width: 18%; line-height: 2.5em;    height: 3.5em;}
 }
 
 
 @media screen and (max-width: 800px) {
-	h3 {font-size:1.3em;}
-	#info_wiadomosc {min-height:2.25rem;}
-	button {width:22%;	margin: 1.5%;padding: 0.75%;}
-	button.admin {width:20%;}
+	div#tytul,div#info {width:100%;}
+	div#tytul {min-height:1rem;}
+	button {width:22%;	margin: 1.5%;padding: 0.75%; font-size:1.2em;}
+
 }
 
 @media screen and (max-width: 680px) {

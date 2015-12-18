@@ -1,7 +1,10 @@
 @charset "UTF-8";
 /* Base page styles */
 body {
-	background-color: #f1f1f1;
+	background-color: #ccc;
+	/*background-color: #f0f0f0;*/
+	/*background: url(papier1.jpg);*/
+}
 }
 /* Base Button Style */
 button {
@@ -46,4 +49,4 @@ button:hover:before {
 button:hover:after {
   right: 5px;
 }
-.active {background:#d8d8d8; color:#004;}	
+.active {background:#888; color:#fff;}	
