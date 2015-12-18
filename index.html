@@ -147,6 +147,12 @@ var radios =
 		"title": "Relax",
 		"stream": "http://pub8.classicalradio.com:80/cr_classicalrelaxation?829ca7436799f18bda7e56f8"
 	},
+	{
+		"title": "Haydn",
+		"stream": "http://pub6.classicalradio.com/cr_haydn"
+	},
+	
+	
 	{"title": "Koniec"}
 
 ];
@@ -423,26 +429,23 @@ var pierwszy = true;
 
 		function execFavourities(ten){
 			var windowparameter = ten.dataset.windowparameter;
-			//console.log('windowparameter=',decodeURIComponent(windowparameter),windowparameter);
-			
-var query='{"jsonrpc":"2.0","method":"Files.GetDirectory","id":"1","params":["'+windowparameter+'"}]';
-sendToKodi(query);
-
-// get-info
-//var query='[{"jsonrpc":"2.0","method":"Player.GetProperties","params":[0,["playlistid","speed","position","totaltime","time","percentage","shuffled","repeat","canrepeat","canshuffle","canseek","partymode"]],"id":30},{"jsonrpc":"2.0","method":"Player.GetItem","params":[0,["title","thumbnail","file","artist","genre","year","rating","album","track","duration","playcount","dateadded","episode","artistid","albumid","tvshowid","fanart"]],"id":31}]';
-//sendToKodi(query);
-
-
-/*
-http://82.145.73.90/jsonrpc?request={"jsonrpc":"2.0","id":"1","method":"Input.ExecuteAction","params":{"action":"plugin://plugin.video.tvbox/?hostingTab=%5b%5d&icon=http%3a%2f%2fpub6.jazzr…ub6.jazzradio.com%3a80%2fjr_jazzballads_aacplus%3fd1e1bfa0a67fafc4764954be"}}
-http://82.145.73.90/jsonrpc?request={"jsonrpc":"2.0","id":"1","method":"Player.Open","params":{"action":"plugin://plugin.video.tvbox/?hostingTab=%5b%5d&icon=http%3a%2f%2fpub6.jazzr…ub6.jazzradio.com%3a80%2fjr_jazzballads_aacplus%3fd1e1bfa0a67fafc4764954be"}}
-http://82.145.73.90/jsonrpc?request={"jsonrpc":"2.0","method":"Files.GetDirectory","id":"1450440299046","params":["plugin://plugin.video.tvbox/?title=Christmas+Classics&url=http%3A%2F%2F107.155.126.58%3A8710%2F%3B&hostingTab=%5B%5D&path=radiofm&play_m3u=1&icon=http%3A%2F%2F107.155.126.58%3A8710%2F%3B","video",["title","file","mimetype","thumbnail"],{"method":"label","order":"ascending","ignorearticle":true}]}
-http://82.145.73.90/jsonrpc?request={"jsonrpc":"2.0","method":"Files.GetDirectory","id":"1450440299046","params":["plugin://plugin.video.tvbox/?title=Christmas+Classics&url=http%3A%2F%2F107.155.126.58%3A8710%2F%3B&hostingTab=%5B%5D&path=radiofm&play_m3u=1&icon=http%3A%2F%2F107.155.126.58%3A8710%2F%3B"}]
-*/
-
-
-			
-
+			var url = ten.dataset.url;		
+			var query = '{"jsonrpc":"2.0","method":"Player.Open","params":{"item":{"file":"'+url+'"},"options":{"repeat":"one"}},"id":1}';
+			sendToKodi(query);
+			//console.log(url);
+			//console.log(query);
+							//console.log('windowparameter=',decodeURIComponent(windowparameter),windowparameter);
+							//var query='{"jsonrpc":"2.0","method":"Files.GetDirectory","id":"1","params":["'+windowparameter+'"}]';
+							//sendToKodi(query);
+							// get-info
+							//var query='[{"jsonrpc":"2.0","method":"Player.GetProperties","params":[0,["playlistid","speed","position","totaltime","time","percentage","shuffled","repeat","canrepeat","canshuffle","canseek","partymode"]],"id":30},{"jsonrpc":"2.0","method":"Player.GetItem","params":[0,["title","thumbnail","file","artist","genre","year","rating","album","track","duration","playcount","dateadded","episode","artistid","albumid","tvshowid","fanart"]],"id":31}]';
+							//sendToKodi(query);
+							/*
+							http://82.145.73.90/jsonrpc?request={"jsonrpc":"2.0","id":"1","method":"Input.ExecuteAction","params":{"action":"plugin://plugin.video.tvbox/?hostingTab=%5b%5d&icon=http%3a%2f%2fpub6.jazzr…ub6.jazzradio.com%3a80%2fjr_jazzballads_aacplus%3fd1e1bfa0a67fafc4764954be"}}
+							http://82.145.73.90/jsonrpc?request={"jsonrpc":"2.0","id":"1","method":"Player.Open","params":{"action":"plugin://plugin.video.tvbox/?hostingTab=%5b%5d&icon=http%3a%2f%2fpub6.jazzr…ub6.jazzradio.com%3a80%2fjr_jazzballads_aacplus%3fd1e1bfa0a67fafc4764954be"}}
+							http://82.145.73.90/jsonrpc?request={"jsonrpc":"2.0","method":"Files.GetDirectory","id":"1450440299046","params":["plugin://plugin.video.tvbox/?title=Christmas+Classics&url=http%3A%2F%2F107.155.126.58%3A8710%2F%3B&hostingTab=%5B%5D&path=radiofm&play_m3u=1&icon=http%3A%2F%2F107.155.126.58%3A8710%2F%3B","video",["title","file","mimetype","thumbnail"],{"method":"label","order":"ascending","ignorearticle":true}]}
+							http://82.145.73.90/jsonrpc?request={"jsonrpc":"2.0","method":"Files.GetDirectory","id":"1450440299046","params":["plugin://plugin.video.tvbox/?title=Christmas+Classics&url=http%3A%2F%2F107.155.126.58%3A8710%2F%3B&hostingTab=%5B%5D&path=radiofm&play_m3u=1&icon=http%3A%2F%2F107.155.126.58%3A8710%2F%3B"}]
+							*/
 		}
 
 		function showFavourites(favs){
@@ -450,10 +453,16 @@ http://82.145.73.90/jsonrpc?request={"jsonrpc":"2.0","method":"Files.GetDirector
 			favdiv.style.display='block';
 			favdiv.innerHTML ='<h4 onClick="document.getElementById(\'favourites\').style.display=\'none\'">Favourities</h4>';
 			for (var f in favs){
-				//console.log(favs[f]);
-				//console.log(favs[f]['windowparameter']);
-				//favdiv.innerHTML += req.favourites[f]['title']+' / '+req.favourites[f]['thumbnail']+' / '+favs[f]['windowparameter'];
-				favdiv.innerHTML += '<p onClick="execFavourities(this);" data-windowparameter="'+favs[f]['windowparameter']+'">'+favs[f]['title']+'</p>';				
+				var wpis =favs[f]['windowparameter'];
+				var res = wpis.match(/url=(.*?)$/g);
+				
+				if (res){
+					var url = decodeURIComponent(res[0]);
+					url = url.replace('url=','');
+					console.log(url);
+					favdiv.innerHTML += '<p onClick="execFavourities(this);" data-url="'+url+'" data-windowparameter="'+favs[f]['windowparameter']+'">'+favs[f]['title']+'</p>';				
+				}
+				//favdiv.innerHTML += '<p onClick="execFavourities(this);" data-windowparameter="'+favs[f]['windowparameter']+'">'+favs[f]['title']+'</p>';				
 			 }
 		}
 
@@ -619,7 +628,7 @@ function ekraninfo(){
 
 	
 	<div class="div_klawiszy" style="margin-top:2em;">
-		<button class="klaw admin" onClick="mpcUpdate()">MPC update</button>
+		<!--button class="klaw admin" onClick="mpcUpdate()">MPC update</button-->
 		<button class="klaw admin" onClick="showConfigUpdate()">Config</button>
 		<div id="config_update" style="display:none;"></div>
 		<div id="mpc_update" style="display:none;"></div>
