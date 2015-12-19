@@ -67,7 +67,7 @@ input[type=range] {
   -webkit-appearance: none;
   margin: 18px 0;
   width: 99%;
-  background: gray;
+  background: #ddd;
 }
 input[type=range]:focus {
   outline: none;
@@ -110,7 +110,7 @@ input[type=range]:focus::-webkit-slider-runnable-track {
 	div#tytul,div#info {width:100%;}
 	div#tytul {min-height:1rem;}
 	button {width:22%;	margin: 1.5%;padding: 0.75%; font-size:1.2em;}
-	#favourites { width:100%}
+	#favourites {max-width:100%; width:100%}
 }
 
 }
