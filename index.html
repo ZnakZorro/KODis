@@ -427,45 +427,92 @@ var pierwszy = true;
 
 /*QQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQ*/	
 
-		function execFavourities(ten){
-			var windowparameter = ten.dataset.windowparameter;
-			var url = ten.dataset.url;		
-			var query = '{"jsonrpc":"2.0","method":"Player.Open","params":{"item":{"file":"'+url+'"},"options":{"repeat":"one"}},"id":1}';
-			sendToKodi(query);
-			//console.log(url);
-			//console.log(query);
-							//console.log('windowparameter=',decodeURIComponent(windowparameter),windowparameter);
-							//var query='{"jsonrpc":"2.0","method":"Files.GetDirectory","id":"1","params":["'+windowparameter+'"}]';
-							//sendToKodi(query);
-							// get-info
-							//var query='[{"jsonrpc":"2.0","method":"Player.GetProperties","params":[0,["playlistid","speed","position","totaltime","time","percentage","shuffled","repeat","canrepeat","canshuffle","canseek","partymode"]],"id":30},{"jsonrpc":"2.0","method":"Player.GetItem","params":[0,["title","thumbnail","file","artist","genre","year","rating","album","track","duration","playcount","dateadded","episode","artistid","albumid","tvshowid","fanart"]],"id":31}]';
-							//sendToKodi(query);
-							/*
-							http://82.145.73.90/jsonrpc?request={"jsonrpc":"2.0","id":"1","method":"Input.ExecuteAction","params":{"action":"plugin://plugin.video.tvbox/?hostingTab=%5b%5d&icon=http%3a%2f%2fpub6.jazzr…ub6.jazzradio.com%3a80%2fjr_jazzballads_aacplus%3fd1e1bfa0a67fafc4764954be"}}
-							http://82.145.73.90/jsonrpc?request={"jsonrpc":"2.0","id":"1","method":"Player.Open","params":{"action":"plugin://plugin.video.tvbox/?hostingTab=%5b%5d&icon=http%3a%2f%2fpub6.jazzr…ub6.jazzradio.com%3a80%2fjr_jazzballads_aacplus%3fd1e1bfa0a67fafc4764954be"}}
-							http://82.145.73.90/jsonrpc?request={"jsonrpc":"2.0","method":"Files.GetDirectory","id":"1450440299046","params":["plugin://plugin.video.tvbox/?title=Christmas+Classics&url=http%3A%2F%2F107.155.126.58%3A8710%2F%3B&hostingTab=%5B%5D&path=radiofm&play_m3u=1&icon=http%3A%2F%2F107.155.126.58%3A8710%2F%3B","video",["title","file","mimetype","thumbnail"],{"method":"label","order":"ascending","ignorearticle":true}]}
-							http://82.145.73.90/jsonrpc?request={"jsonrpc":"2.0","method":"Files.GetDirectory","id":"1450440299046","params":["plugin://plugin.video.tvbox/?title=Christmas+Classics&url=http%3A%2F%2F107.155.126.58%3A8710%2F%3B&hostingTab=%5B%5D&path=radiofm&play_m3u=1&icon=http%3A%2F%2F107.155.126.58%3A8710%2F%3B"}]
-							*/
-		}
+// Favourities Faworyty ffffffffffffffffffffffffffffffffffffffff
+	function shortTitle(title){
+		title=title.replace(/\[.*?\]/g,'');
+		var arr = [];
+		arr = title.split('/');
+		if (arr[1]) return arr[0];
+		arr = title.split('|');
+		if (arr[1]) return arr[0];
+		return title;
+	}
+	
+	function findURL(wpis){
+		var url = null;
+		var ktory = wpis.search('http://');
+		//console.log('findURL::');
+		//console.log('ktory=',ktory);
+		if (ktory==0) return wpis;
+		
+		res = wpis.match(/url=(.*?)$/g);
+		//console.log(wpis);
+		//console.log(res);
+		if(res) {
+			wpis = res[0];
+			url = wpis.replace('url=','');
+		}		
+		
+		//arr = wpis.split('url=');
+		//var ostatni = arr.pop();
+		//console.log('MEDIA=',wpis);
+		//console.log('ktory=',wpis.search('http'));
+		//if (wpis.search('http')==0) url = wpis;
+		//console.log(faworek.path);
+		//if(ostatni.search('plugin')) {url=null;} else {url = ostatni;}	
+		return url;
+	}
 
-		function showFavourites(favs){
-			var favdiv = document.getElementById('favourites');
-			favdiv.style.display='block';
-			favdiv.innerHTML ='<h4 onClick="document.getElementById(\'favourites\').style.display=\'none\'">Favourities</h4>';
-			for (var f in favs){
-				var wpis =favs[f]['windowparameter'];
-				var res = wpis.match(/url=(.*?)$/g);
-				
-				if (res){
-					var url = decodeURIComponent(res[0]);
-					url = url.replace('url=','');
-					console.log(url);
-					favdiv.innerHTML += '<p onClick="execFavourities(this);" data-url="'+url+'" data-windowparameter="'+favs[f]['windowparameter']+'">'+favs[f]['title']+'</p>';				
+	function execFavourities(ten){
+		var windowparameter = ten.dataset.windowparameter;
+		var url = ten.dataset.url;		
+		var query = '{"jsonrpc":"2.0","method":"Player.Open","params":{"item":{"file":"'+url+'"},"options":{"repeat":"one"}},"id":1}';
+		sendToKodi(query);
+
+	}
+
+	function showFavourites(favs){
+		var favdiv = document.getElementById('favourites');
+		// if open then close
+		if (favdiv.style.display=='block'){
+			favdiv.style.display='none';
+			return;
+		}
+		favdiv.style.display='block';
+		favdiv.innerHTML ='<p style="font-weight:bold;" onClick="document.getElementById(\'favourites\').style.display=\'none\'">Favourities</p>';
+		var x=1;
+		for (var f in favs){
+			//thumbnail: ""	title: "Beethoven"	type: "window"	window: "videos"	windowparameter: "plugin://plugin.video.tvbox/?hostingTab=%5b%5d&icon=http%3a%2f%2fpub7.classicalradio.com%2fcr_beethoven&path=radiofm&play_m3u=1&title=Beethoven&url=http%3a%2f%2fpub7.classicalradio.com%2fcr_beethoven"		
+			var faworek = favs[f];
+			//console.log("\n",f,x,faworek.title,faworek.type,faworek.window);
+			var url = null;
+			if (faworek.path) url = findURL(decodeURIComponent(faworek.path));
+			else if (faworek.windowparameter) url = findURL(decodeURIComponent(faworek.windowparameter));
+/*			
+			if (faworek.type == 'window'){
+				if (faworek.windowparameter){
+					var wpis = decodeURIComponent(faworek.windowparameter);
+					res = wpis.match(/url=(.*?)$/g);
+					if(res) {
+						wpis = res[0];
+						url = wpis.replace('url=','');
+					}
 				}
-				//favdiv.innerHTML += '<p onClick="execFavourities(this);" data-windowparameter="'+favs[f]['windowparameter']+'">'+favs[f]['title']+'</p>';				
-			 }
+			}
+			
+			if (faworek.type == 'media'){
+				var wpis = decodeURIComponent(faworek.path);
+				url = findURL(wpis);
+			}
+*/			
+			//console.log('U R L = ',url);
+			if (url) {
+				favdiv.innerHTML += '<p onClick="execFavourities(this);" data-url="'+url+'">'+x+'. '+shortTitle(faworek.title)+'</p>';
+				x++;
+			}
 		}
-
+	}
+// Favourities Faworyty ffffffffffffffffffffffffffffffffffffffff
 
 	
 	// włącz radio wg numeru
@@ -599,24 +646,19 @@ function ekraninfo(){
 	<div id="tytul"><span id="wybranyKomputer">Internet</span> :: <span id="wybrane">Radio</span></div>
 	<div id="info" ></div>
 </div>
-	<!--div style="clear:both; width:100%;">	
-		<button class="klaw admin vol glos" onClick="ustawVol(0);">0</button>
-		<button class="klaw admin vol"      onClick="ustawVol(33)"><b>10</b></button>
-		<button class="klaw admin vol"      onClick="ustawVol(66)"><b>25</b></button>
-		<button class="klaw admin vol"      onClick="ustawVol(80)"><b>50</b></button>
-		<button class="klaw admin vol"      onClick="ustawVol(90)"><b>75</b></button>
-		<button class="klaw admin vol glos" onClick="ustawVol(100)">100</button>
-	</div-->
+
 	
 	<div style="clear:both; width:100%;">
 		<p class="note">Głosnośc: <span id="VolVal">0</span>%</p>
 		<input id="VolSlider" type="range" min="0" max="100" step="2.5" defaultValue="25" onChange="ustawVolSlider(this)" />
+		<!--button class="klaw admin vol"      onClick="ustawVol(80)"><b>50</b></button-->
 	</div>
 	
 	<div class="div_klawiszy">
+		<button onClick='radiokody(this);' data-kod='{"jsonrpc":"2.0","method":"Favourites.GetFavourites","params":{"properties":["window","path","thumbnail","windowparameter"]},"id":1}' class='admin'> Faworyty </button> 
+		<button onClick='radiokody(this);' data-kod='{"jsonrpc":"2.0","method":"Player.Stop","params":{"playerid":0},"id":1}' class='admin'> Stop </button> 
 		<button onClick='radiokody(this);' data-kod='{"jsonrpc":"2.0","method":"Player.PlayPause","params":{"playerid":0},"id":1}' class='admin'> Play/Pause </button> 
 		<button onClick='radiokody(this);' data-kod='{"jsonrpc":"2.0","method":"Player.GetItem","params":{"properties":["title","thumbnail","file","fanart","streamdetails"],"playerid":0},"id":"AudioGetItem"}' class='admin'> Co jest grane </button> 
-		<button onClick='radiokody(this);' data-kod='{"jsonrpc":"2.0","method":"Favourites.GetFavourites","params":{"properties":["window","path","thumbnail","windowparameter"]},"id":1}' class='admin'> Faworyty </button> 
 	</div>
 		
 	<div id="favourites" style="dispaly:none;"></div>
