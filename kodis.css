@@ -28,14 +28,15 @@ p.note {margin-bottom:-0.4em;}
 
 #favourites {
     float: left;
-    /*width: 50%;*/
     background: #DDD;
     margin: 1em;
-    padding: 1em;
-    line-height: 2em;
+    padding: 0 0.5em;
+    line-height: 1.7em;
     cursor: pointer;
 	display:none;
 	position: relative;
+	max-width:50%;
+	overflow:hidden;
 }
 
 button.vol {width:14%;}
@@ -66,7 +67,7 @@ input[type=range] {
   -webkit-appearance: none;
   margin: 18px 0;
   width: 99%;
-  background: transparent;
+  background: gray;
 }
 input[type=range]:focus {
   outline: none;
@@ -109,6 +110,8 @@ input[type=range]:focus::-webkit-slider-runnable-track {
 	div#tytul,div#info {width:100%;}
 	div#tytul {min-height:1rem;}
 	button {width:22%;	margin: 1.5%;padding: 0.75%; font-size:1.2em;}
+	#favourites { width:100%}
+}
 
 }
 
