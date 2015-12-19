@@ -151,9 +151,16 @@ var radios =
 		"title": "Haydn",
 		"stream": "http://pub6.classicalradio.com/cr_haydn"
 	},
+	{
+		"title": "Hendel",
+		"stream": "http://pub8.classicalradio.com:80/cr_handel"
+	},
+	{
+		"title": "Beethoven",
+		"stream": "http://pub8.classicalradio.com:80/cr_beethoven"
+	},
 	
-	
-	{"title": "Koniec"}
+	{"title": "Ustawienia"}
 
 ];
 
@@ -656,9 +663,9 @@ function ekraninfo(){
 	
 	<div class="div_klawiszy">
 		<button onClick='radiokody(this);' data-kod='{"jsonrpc":"2.0","method":"Favourites.GetFavourites","params":{"properties":["window","path","thumbnail","windowparameter"]},"id":1}' class='admin'> Faworyty </button> 
+		<button onClick='radiokody(this);' data-kod='{"jsonrpc":"2.0","method":"Player.GetItem","params":{"properties":["title","thumbnail","file","fanart","streamdetails"],"playerid":0},"id":"AudioGetItem"}' class='admin'> Co jest grane </button> 
 		<button onClick='radiokody(this);' data-kod='{"jsonrpc":"2.0","method":"Player.Stop","params":{"playerid":0},"id":1}' class='admin'> Stop </button> 
 		<button onClick='radiokody(this);' data-kod='{"jsonrpc":"2.0","method":"Player.PlayPause","params":{"playerid":0},"id":1}' class='admin'> Play/Pause </button> 
-		<button onClick='radiokody(this);' data-kod='{"jsonrpc":"2.0","method":"Player.GetItem","params":{"properties":["title","thumbnail","file","fanart","streamdetails"],"playerid":0},"id":"AudioGetItem"}' class='admin'> Co jest grane </button> 
 	</div>
 		
 	<div id="favourites" style="dispaly:none;"></div>
