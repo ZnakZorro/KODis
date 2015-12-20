@@ -38,9 +38,9 @@ max-width:50%;
 overflow:hidden;
 }
 p.faworek {
-line-height: 1.6em;
+padding: 0 0 0.8em 0;
 cursor: pointer;
-border-bottom:1px solid silver;
+border-bottom:2px solid white;
 }
 
 #modal{
@@ -50,13 +50,12 @@ border-bottom:1px solid silver;
 	position: fixed;
 	left: 50%;
 	top: 1em;
-	transform: translate(-50%, 0);
+	margin-left:-30%;
 	width: 60%;
 	min-height: 10em;
 	text-align:center;
-	border-radius: 2em;
-	box-shadow: 5px 5px 10px #848484;
 	opacity:0.8;
+	border-radius: 1em;
 }
 
 button.vol {width:14%;}
@@ -126,17 +125,18 @@ background: #336;
 }
 
 @media screen and (max-width: 720px) {
-	#modal{width:90%;}
+	#modal{width:90%; margin-left:-45%;}
 	button {width: 30%;}
 	button.admin{width: 30%;}
 	button.vol{width: 21%;}
-	#favourites { width:98%;max-width:98%;}
+	#favourites { width:94%;max-width:94%;}
 }
 
 @media screen and (max-width: 526px) {
 	button {width: 49.9%;	margin: 2% 0;}
 	button.admin{width: 49%;}
 	button.vol{width: 19%;}
+	#favourites { width:91%;max-width:91%;}
 	
 }		
 @media screen and (max-width: 319px) {
