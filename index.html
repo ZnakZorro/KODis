@@ -160,7 +160,7 @@ var radios =
 		"stream": "http://pub8.classicalradio.com:80/cr_beethoven"
 	},
 	
-	{"title": "Ustawienia"}
+	{"title": "Koniec"}
 
 ];
 
@@ -387,20 +387,22 @@ var pierwszy = true;
 	}
 		
 	function foo(ret){
-		//console.log(ret);
-		var info = document.getElementById('info')
+		console.log(ret);
+		if (ret.error) {showModalInfo(ret.error.message,1); return;}
+		var info = document.getElementById('info');
 		var req = ret.result;
 		//console.log(req,typeof(req));
 		if(req){
 			info.innerHTML = '~ ';
+			var informacja = '';
 			
-			if (typeof(req) == 'string') info.innerHTML += ' '+req+' ';
-			if (typeof(req) == 'number') info.innerHTML += ' '+req+' ';
+			if (typeof(req) == 'string') {informacja = req; info.innerHTML += ' '+req+' ';}
+			if (typeof(req) == 'number') {info.innerHTML += ' '+req+' ';}
 			
-			if (req.speed) {info.innerHTML += req.speed; }// else info.innerHTML += ' ~ ';
+			if (req.speed) {informacja = req.speed; info.innerHTML += req.speed; }// else info.innerHTML += ' ~ ';
 			
 			if (req.item){
-				if (req.item.label != null){info.innerHTML += req.item.label+' ';}
+				if (req.item.label != null){informacja = req.item.label; info.innerHTML += req.item.label+' ';}
 			}
 			if (req.addon){
 				 if (req.addon.addonid) {info.innerHTML += req.addon.addonid+' ';}
@@ -427,11 +429,20 @@ var pierwszy = true;
 				showFavourites(req.favourites);
 			}
 			
+			if (informacja) showModalInfo(informacja,2);
 			
 			if (pierwszy) setTimeout(function(){kodinfo(); pierwszy=false;},3000);
 		}
 	}
 
+	function showModalInfo(informacja,sek){
+		document.getElementById('modal').style.display='block';
+		document.getElementById('modalBody').innerHTML = informacja;
+		setTimeout(function(){
+			document.getElementById('modal').style.display='none';
+		},sek*1000);
+		
+	}
 /*QQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQ*/	
 
 // Favourities Faworyty ffffffffffffffffffffffffffffffffffffffff
@@ -478,6 +489,7 @@ var pierwszy = true;
 
 	}
 
+	
 	function showFavourites(favs){
 		var favdiv = document.getElementById('favourites');
 		// if open then close
@@ -486,7 +498,7 @@ var pierwszy = true;
 			return;
 		}
 		favdiv.style.display='block';
-		favdiv.innerHTML ='<p style="font-weight:bold;" onClick="document.getElementById(\'favourites\').style.display=\'none\'">Favourities</p>';
+		favdiv.innerHTML ='<p class="faworek" style="font-weight:bold;" onClick="document.getElementById(\'favourites\').style.display=\'none\'">Favourities</p>';
 		var x=1;
 		for (var f in favs){
 			//thumbnail: ""	title: "Beethoven"	type: "window"	window: "videos"	windowparameter: "plugin://plugin.video.tvbox/?hostingTab=%5b%5d&icon=http%3a%2f%2fpub7.classicalradio.com%2fcr_beethoven&path=radiofm&play_m3u=1&title=Beethoven&url=http%3a%2f%2fpub7.classicalradio.com%2fcr_beethoven"		
@@ -514,7 +526,7 @@ var pierwszy = true;
 */			
 			//console.log('U R L = ',url);
 			if (url) {
-				favdiv.innerHTML += '<p onClick="execFavourities(this);" data-url="'+url+'">'+x+'. '+shortTitle(faworek.title)+'</p>';
+				favdiv.innerHTML += '<p onClick="execFavourities(this);" data-url="'+url+'" class="faworek">'+x+'. '+shortTitle(faworek.title)+'</p>';
 				x++;
 			}
 		}
@@ -717,6 +729,11 @@ function ekraninfo(){
 
 <!--
 -->
-
+<div class="row">
+	<div id="modal" class="center" style="display:none;">
+		<h3>Info</h3>
+		<div id="modalBody"></div>
+	</div>
+<div>
 </body>
 </html>
