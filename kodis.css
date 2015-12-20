@@ -21,22 +21,42 @@ div#info {width:69%;}
 #mpc_update	{margin:1em 2em; padding:1em;font-family: monospace;font-size: 0.8em;}
 #config_input {width:15.5em;}
 #devices {width:100%;}
+#VolSlider {width:99%; clear:both; margin:1em 0 2em 0;}
 input {font-size:1.2em; padding:4px;margin:8px;}
 div.configs, div#klawisze {display:block; margin-bottom:0.5em;}
 p.note {margin-bottom:-0.4em;}
-#VolSlider {width:99%; clear:both; margin:1em 0 2em 0;}
+
 
 #favourites {
 float: left;
 background: #d8d8d8;
 margin: 1em;
 padding: 0 0.5em;
-line-height: 1.7em;
-cursor: pointer;
 display:none;
 position: relative;
 max-width:50%;
 overflow:hidden;
+}
+p.faworek {
+line-height: 1.6em;
+cursor: pointer;
+border-bottom:1px solid silver;
+}
+
+#modal{
+	border:5px solid #888;
+	background:#666;
+	color:white;
+	position: fixed;
+	left: 50%;
+	top: 1em;
+	transform: translate(-50%, 0);
+	width: 60%;
+	min-height: 10em;
+	text-align:center;
+	border-radius: 2em;
+	box-shadow: 5px 5px 10px #848484;
+	opacity:0.8;
 }
 
 button.vol {width:14%;}
@@ -106,10 +126,11 @@ background: #336;
 }
 
 @media screen and (max-width: 720px) {
+	#modal{width:90%;}
 	button {width: 30%;}
 	button.admin{width: 30%;}
 	button.vol{width: 21%;}
-	#favourites { width:100%;max-width:100%;}
+	#favourites { width:98%;max-width:98%;}
 }
 
 @media screen and (max-width: 526px) {
