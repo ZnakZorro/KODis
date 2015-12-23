@@ -1,0 +1,124 @@
+<!doctype html>
+<html lang="pl">
+<head>
+	<meta charset="UTF-8">
+	<title>Radio com</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1"></meta>
+<style>
+	*, *:before, *:after {
+	  -webkit-box-sizing: border-box; 
+	  -moz-box-sizing: border-box; 
+	  box-sizing: border-box;
+	}
+	body {margin:1%; font:normal 20px/48px georgia;
+		background:#000; color:#ddd;
+		
+	}
+	h1,h2,h3 {margin-top:0.25em;margin-bottom:0.25em;}
+	.active {
+		color:#9bf; 
+		background:#222;
+		background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#222), color-stop(100%,#555));
+	}
+
+button {
+	font-family:georgia;
+	font-size:18px;
+	line-height:72px;
+	background:#000;
+	color:#ddd;
+    text-align: center;
+	width:19.999%; 
+	margin: 0%;
+	display:inline-block; 
+	border:none;
+	border-left: 3px solid #000;
+	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#383838), color-stop(100%,#080808));
+}
+button:focus{outline: none;}
+
+@media screen and (min-width: 1700px) {button {width:14.2499%;} }
+@media screen and (max-width: 1200px) {button {width:24.499;} }
+@media screen and (max-width: 1024px)  {button {width:32.999%;} }
+@media screen and (max-width: 720px)  {button {width:48.999%; margin:0.5%;}}
+@media screen and (max-width: 399px)  {button {width:97%; margin:1.0%;} }
+
+</style>	
+<script>
+var jazzradiourl = "http://pub{x}.jazzradio.com:80/";
+var jazzradio = ["bassjazz","bebop","blues","bluesrock","bossanova","classicjazz","vocaljazz","cooljazz","currentjazz","davekoz","flamencojazz","fusionlounge","guitarjazz","gypsyjazz","hardbop","holidayjazz","holidaysmoothjazz","jazzballads","latinjazz","mellowjazz","mellowsmoothjazz","pariscafe","pianojazz","pianotrios","saxophonejazz","sinatrastyle","smoothbossanova","smoothjazz","smoothjazz247","smoothlounge","smoothuptempo","smoothvocals","straightahead","swingnbigband","timelessclassics","trumpetjazz","vibraphonejazz","vocallegends"];
+
+var classicalurl = "http://pub{x}.classicalradio.com:80/";
+var classical = ["20thcentury","bach","baroqueperiod","beethoven","brahms","celloworks","chamberworks","chopin","choralworks","classicalperiod","classicalpianotrios","classicalrelaxation","concertos","easyclassical","handel","haydn","medievalperiod","mozart","operas","orchestralworks","organworks","pianoworks","renaissanceperiod","romanticperiod","sacredworks","soloinstruments","solopiano","sonatas","songsnlieders","stringworks","symphonies","tchaikovsky","violinworks","vivaldi","windworks"];
+</script>
+	
+	
+</head>
+<body>
+<iframe id="ramka" name="ramka" src="" frameborder="0" style="position:absolute; top:0; right:0; width:320px; height:85px; display:none;"></iframe>
+<audio src="" id="player" controls autoplay  style="background:#000; width:100%;"></audio>
+<h2 id="title">Internet radio</h2>
+<div id="radia" class=""></div>
+
+<script>
+var lastActive=null;
+console.time('t'); 
+	function uid(){function _p8(){return (Math.random().toString(16)).substr(2,8);} return _p8()+_p8()+_p8();}
+	
+	String.prototype.FC = function() {
+		return this.charAt(0).toUpperCase() + this.slice(1);
+	}
+
+	function makeStream(url,path,prefix){
+		los = Math.round(Math.random()*2)+5;
+		url = url.replace('{x}',los);
+		return url+prefix+path+'?'+uid();		
+	}
+	
+	function radioStart(){
+		var title=this.innerHTML;
+		var url=this.dataset.url;
+		this.className='active';
+		console.log(title);
+		console.log(url);
+		document.getElementById('title').innerHTML=title;
+		//document.getElementById('ramka').src=url;
+		document.getElementById('player').src=url;
+		
+		if (lastActive) lastActive.className='';
+		lastActive = this;
+
+	}
+	
+	function wstawRadia(title,arradiosurl,arradios,prefix){
+		var radia = document.getElementById('radia');
+		var	newH3 = document.createElement('h3');
+			newH3.innerHTML = title;
+		radia.appendChild(newH3);
+
+		for (var s in arradios){
+			var stream = makeStream(arradiosurl,arradios[s],prefix);
+			var title = (arradios[s]).FC();
+			var	klawisz = document.createElement('button');
+			klawisz.innerHTML = title;
+			klawisz.setAttribute('data-url',stream); 
+			klawisz.classList.add('klawisz');
+			klawisz.addEventListener('click', radioStart, false); 			
+			radia.appendChild(klawisz);
+		}
+	}
+
+	document.addEventListener('DOMContentLoaded', function() {
+		wstawRadia('Classical',classicalurl,classical,'cr_');
+		wstawRadia('Jazz',jazzradiourl,jazzradio,'jr_');
+	});
+
+console.timeEnd('t');	
+	
+</script>		
+</body>
+</html>
+
+
+
+
