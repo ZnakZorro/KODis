@@ -1,0 +1,42 @@
+	*, *:before, *:after {
+	  -webkit-box-sizing: border-box; 
+	  -moz-box-sizing: border-box; 
+	  box-sizing: border-box;
+	}
+	body {margin:1%; font:normal 20px/48px georgia;
+		background:#000; color:#ddd;
+		
+	}
+	h1,h2,h3 {margin-top:0.25em;margin-bottom:0.25em;}
+	.active {
+		color:#9bf; 
+		background:#222;
+		background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#222), color-stop(100%,#555));
+	}
+
+button {
+	font-family:georgia;
+	font-size:18px;
+	line-height:72px;
+	background:#000;
+	color:#ddd;
+    text-align: center;
+	width:19.999%; 
+	margin: 0%;
+	padding:0;
+	display:inline-block; 
+	border:none;
+	border-left: 3px solid #000;
+	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#383838), color-stop(100%,#080808));
+}
+button:focus{outline: none;}
+
+p.category {background: #222;}
+input[type=range] {background: #222;}
+#favourites {background: #444;}
+
+@media screen and (min-width: 1700px) {button {width:14.2499%;} }
+@media screen and (max-width: 1200px) {button {width:24.499;} }
+@media screen and (max-width: 1024px)  {button {width:32.999%;} }
+@media screen and (max-width: 720px)  {button {width:48.999%; margin:0.5%;}}
+@media screen and (max-width: 399px)  {button {width:97%; margin:1.0%;} }
