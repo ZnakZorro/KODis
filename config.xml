@@ -3,7 +3,7 @@
         xmlns:gap = "http://phonegap.com/ns/1.0"
         id        = "com.phonegap.kodis"
         versionCode="10" 
-        version   = "1.1.0">
+        version   = "1.1.1">
 
     <name>KODis</name>
 
@@ -35,20 +35,21 @@
 <access origin="*" launch-external="yes" />
 <access origin="http://zszczech.com.pl" subdomains="true" />
 <access origin="http://192.168.1.105" subdomains="true" />
+<access origin="http://192.168.1.109" subdomains="true" />
+<access origin="http://192.168.1.110" subdomains="true" />
+<access origin="http://192.168.1.111" subdomains="true" />
 <access origin="http://192.168.1.112" subdomains="true" />
-<access origin="http://82.145.72.175" subdomains="true" />
-<access origin="http://82.145.73.90" subdomains="true" />
-<access origin="http://127.1.1.0" subdomains="true" />
 
+<access origin="http://127.1.1.0" subdomains="true" />
 
 <allow-intent href="*" />
 <allow-navigation href="*" />
 
-		<icon src="kodisy.png" />
-		<icon src="kodisy.png" gap:platform="android" gap:density="ldpi" />
-		<icon src="kodisy.png" gap:platform="android" gap:density="mdpi" />
-		<icon src="kodisy.png" gap:platform="android" gap:density="hdpi" />
-		<icon src="kodisy.png" gap:platform="android" gap:density="xhdpi" />
+	<icon src="kodisy.png" />
+	<icon src="kodisy.png" gap:platform="android" gap:density="ldpi" />
+	<icon src="kodisy.png" gap:platform="android" gap:density="mdpi" />
+	<icon src="kodisy.png" gap:platform="android" gap:density="hdpi" />
+	<icon src="kodisy.png" gap:platform="android" gap:density="xhdpi" />
     <gap:splash src="kodisy.png"  gap:platform="android" gap:density="ldpi" />
     <gap:splash src="kodisy.png"  gap:platform="android" gap:density="mdpi" />
     <gap:splash src="kodisy.png"  gap:platform="android" gap:density="hdpi" />
