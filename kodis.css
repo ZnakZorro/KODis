@@ -1,20 +1,10 @@
-*, *:before, *:after {
-	-webkit-box-sizing: border-box; 
-	-moz-box-sizing: border-box; 
-	box-sizing: border-box;
-}
-	
-body{
-	font-size:16px;
-	font-family:verdana,sans-serif; 
-	margin:0 0.25em;
-	padding:0;
-}
+*, *:before, *:after {-webkit-box-sizing: border-box; -moz-box-sizing: border-box; box-sizing: border-box;}
+body{font-size:16px;margin:0;padding:0;font-family:verdana,sans-serif;}	
+
 .row {width:100%; display:block;}
 div#tytul,div#info {float:left; min-height: 3.5rem; line-height: 2em;}
 div#tytul {width:30%;font-size:1.15em; font-weight:normal;}
-div#info {width:69%;}
-
+div#info {top:0;z-index:1;width:100%;position:fixed; opacity:0.85; background:#444; color:#fff; min-height:2em; padding:0.5em; line-height:1.0em;}
 .pole {width:100%; clear:both; margin:1px solid white;}
 .div_klawiszy {margin-top:1rem;}
 #wybrane {font-weight:bold;}
@@ -26,14 +16,8 @@ div#info {width:69%;}
 input {font-size:1.2em; padding:4px;margin:8px;}
 p.note {margin-bottom:-0.4em;}
 .fav {cursor: pointer;margin: 0.8em 0; border-bottom: 1px dashed gray; padding-bottom: 0.5em;}
-div.configs, div#klawisze {
-    display: block;
-    margin: 2em 0;
-}
-div.configs{
-    border: 1px solid gray;
-    background: #666;
-}
+div.configs, div#klawisze {display: block;margin: 2em 0;}
+div.configs{border: 1px solid gray; background: #666;}
 
 #favourites {
 float: left;
