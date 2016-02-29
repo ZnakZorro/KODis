@@ -118,8 +118,8 @@ background: #336;
 
 @media screen and (max-width: 720px) {
 	#modal{width:90%; margin-left:-45%;}
-	button {width: 30%;}
-	button.admin{width: 30%;}
+	button {width: 29%;}
+	button.admin{width: 29%;}
 	button.vol{width: 21%;}
 	#favourites { width:94%;max-width:94%;}
 }
