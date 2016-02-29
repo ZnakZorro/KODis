@@ -24,13 +24,15 @@ div#info {width:69%;}
 #VolSlider {width:99%; clear:both; margin:1em 0 2em 0;}
 input {font-size:1.2em; padding:4px;margin:8px;}
 p.note {margin-bottom:-0.4em;}
+.fav{cursor:pointer; margin-top:1.1em; border-bottom: 1px dashed gray;}
 div.configs, div#klawisze {
     display: block;
     margin: 2em 0;
+}
+div.configs{
     border: 1px solid gray;
     background: #666;
 }
-.fav{cursor:pointer; margin-top:1.1em; border-bottom: 1px dashed gray;}
 
 #favourites {
 float: left;
