@@ -28,7 +28,7 @@ var radios =
 		"title": "RMF Classic",
 		"stream": "http://31.192.216.5:8000/rmf_classic"
 	},
-	{"title": "Inne"},
+
 	{
 		"title": "PR-1 Jedynka",
 		"stream": "mms://stream.polskieradio.pl/program1"
@@ -50,6 +50,10 @@ var radios =
 		"stream": "http://stream4.nadaje.com:11986/prs.aac"
 	},
 	{
+		"title": "Złote Przeboje",
+		"stream": "http://mainstream.radioagora.pl/tuba9-1.mp3"
+	},	
+	{
 		"title": "Guitar Acoustic",
 		"stream": "http://streaming.radionomy.com/Acoustic-Guitar"
 	},
@@ -70,10 +74,7 @@ var radios =
 		"title": "Smooth lounge",
 		"stream": "http://listen.radionomy.com/the-smooth-lounge"
 	},
-	{
-		"title": "Złote Przeboje",
-		"stream": "http://mainstream.radioagora.pl/tuba9-1.mp3"
-	},
+
 	{
 		"title": "PL-Smooth Jazz",
 		"stream": "http://178.32.161.112:5700"
@@ -173,10 +174,8 @@ var pierwszy = true;
 
    function onLoad() {
         document.addEventListener("deviceready", onDeviceReady, false);
-
 		try {if (device.uuid) {console.log(device.uuid);}	}
 		catch(err) {onDeviceReady();}
-		
 	}
 
 	function ustawActive(){
@@ -204,7 +203,6 @@ var pierwszy = true;
 			klawisze.appendChild(klaw);	
 		}
 		if (wybraneRadio != 0) dajInfoRadio('radio='+wybraneRadio,true);
-		
 	}
 	
 
@@ -356,41 +354,19 @@ var pierwszy = true;
 
 /*QQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQ*/	
 
-		function execFavourities(ten){
-			//var windowparameter = ten.dataset.windowparameter;
-			//console.log('windowparameter=',decodeURIComponent(windowparameter),windowparameter);
-var path = ten.dataset.path;			
-//var query='{"jsonrpc":"2.0","method":"Files.GetDirectory","id":"1","params":["'+windowparameter+'"}]';
-var query='{"id":1,"jsonrpc":"2.0","method":"Player.Open","params":{"item":{"file":"'+path+'"}}}';
-
-sendToKodi(query);
-
-// get-info
-//var query='[{"jsonrpc":"2.0","method":"Player.GetProperties","params":[0,["playlistid","speed","position","totaltime","time","percentage","shuffled","repeat","canrepeat","canshuffle","canseek","partymode"]],"id":30},{"jsonrpc":"2.0","method":"Player.GetItem","params":[0,["title","thumbnail","file","artist","genre","year","rating","album","track","duration","playcount","dateadded","episode","artistid","albumid","tvshowid","fanart"]],"id":31}]';
-//sendToKodi(query);
-
-
-/*
-http://82.145.73.90/jsonrpc?request={"jsonrpc":"2.0","id":"1","method":"Input.ExecuteAction","params":{"action":"plugin://plugin.video.tvbox/?hostingTab=%5b%5d&icon=http%3a%2f%2fpub6.jazzr…ub6.jazzradio.com%3a80%2fjr_jazzballads_aacplus%3fd1e1bfa0a67fafc4764954be"}}
-http://82.145.73.90/jsonrpc?request={"jsonrpc":"2.0","id":"1","method":"Player.Open","params":{"action":"plugin://plugin.video.tvbox/?hostingTab=%5b%5d&icon=http%3a%2f%2fpub6.jazzr…ub6.jazzradio.com%3a80%2fjr_jazzballads_aacplus%3fd1e1bfa0a67fafc4764954be"}}
-http://82.145.73.90/jsonrpc?request={"jsonrpc":"2.0","method":"Files.GetDirectory","id":"1450440299046","params":["plugin://plugin.video.tvbox/?title=Christmas+Classics&url=http%3A%2F%2F107.155.126.58%3A8710%2F%3B&hostingTab=%5B%5D&path=radiofm&play_m3u=1&icon=http%3A%2F%2F107.155.126.58%3A8710%2F%3B","video",["title","file","mimetype","thumbnail"],{"method":"label","order":"ascending","ignorearticle":true}]}
-http://82.145.73.90/jsonrpc?request={"jsonrpc":"2.0","method":"Files.GetDirectory","id":"1450440299046","params":["plugin://plugin.video.tvbox/?title=Christmas+Classics&url=http%3A%2F%2F107.155.126.58%3A8710%2F%3B&hostingTab=%5B%5D&path=radiofm&play_m3u=1&icon=http%3A%2F%2F107.155.126.58%3A8710%2F%3B"}]
-*/
-
-
-			
-
-		}
-
-		function showFavourites(favs){
-			var favdiv = document.getElementById('favourites');
-			favdiv.style.display='block';
-			favdiv.innerHTML ='<h4>Favourities</h4>';
-			for (var f in favs){
-				//console.log(favs[f]);
-				favdiv.innerHTML += '<p class="fav" onClick="execFavourities(this);" data-path="'+favs[f]['path']+'">'+favs[f]['title']+'</p>';
-			 }
-		}
+function execFavourities(ten){
+	var path = ten.dataset.path;			
+	var query='{"id":1,"jsonrpc":"2.0","method":"Player.Open","params":{"item":{"file":"'+path+'"}}}';
+	sendToKodi(query);
+}
+function showFavourites(favs){
+	var favdiv = document.getElementById('favourites');
+	if (favdiv.style.display=="none") {favdiv.style.display='block';} else {favdiv.style.display="none"; return}
+	favdiv.innerHTML ='<h4>Favourities</h4>';
+	for (var f in favs){
+		favdiv.innerHTML += '<p class="fav" onClick="execFavourities(this);" data-path="'+favs[f]['path']+'">'+favs[f]['title']+'</p>';
+	 }
+}
 
 
 	
@@ -538,7 +514,7 @@ function ekraninfo(){
 		<button onClick='radiokody(this);' data-kod='{"jsonrpc":"2.0","method":"Favourites.GetFavourites","params":{"properties":["window","path","thumbnail","windowparameter"]},"id":1}' class='admin'> Faworyty </button> 
 	</div>
 		
-	<div id="favourites" style="dispaly:none;"></div>
+	<div id="favourites" style="display:none;"></div>
 	<div id="klawisze"></div>
 	
 	
