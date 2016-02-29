@@ -33,6 +33,7 @@ var radios =
 		"title": "RMF Classic",
 		"stream": "http://31.192.216.5:8000/rmf_classic"
 	},
+	/*
 	{
 		"title": "Jazz Ballads",
 		"stream": "http://pub6.jazzradio.com:80/jr_jazzballads_aacplus?d1e1bfa0a67fafc4764954be"
@@ -45,6 +46,7 @@ var radios =
 		"title": "Vocal Legend",
 		"stream": "http://pub1.jazzradio.com:80/jr_vocallegends_aacplus?d1e1bfa0a67fafc4764954be"
 	},
+	*/
 	{"title": "Inne"},
 	{
 		"title": "Gypsy Jazz",
@@ -156,9 +158,9 @@ var radios =
 
 var config=[
 {
-		"title": "Orange",
+		"title": "Zero",
 		"protokol": "http://",
-		"ip": "192.168.1.105",
+		"ip": "192.168.1.110",
 		"port": "8080",
 		"class": "active"
 	}, {
@@ -176,13 +178,13 @@ var config=[
 	}, {
 		"title": "webWI",
 		"protokol": "http://",
-		"ip": "82.145.71.139",
+		"ip": "82.145.73.152",
 		"port": "8080",
 		"class": ""
 	}, {
 		"title": "WIZUT",
 		"protokol": "http://",
-		"ip": "82.145.73.90",
+		"ip": "82.145.64.137",
 		"port": "8080",
 		"class": ""
 	}
@@ -256,21 +258,6 @@ var pierwszy = true;
 		
 	}
 	
-/*	
-	var wpis_wiadomosc='';
-	function preparujWpis(wpis_wiadomosc){
-		var infoOut  = '';
-		//RMF Classic: Daniel Bloom - Tulipany [playing] #2/24 0:00/0:00 (0%) volume: 0% repeat: off random: off single: off consume: off
-		var arr = wpis_wiadomosc.split('#');
-		if (arr[0]) infoOut = '<span>'+arr[0]+'</span>';
-		if (arr[1]){
-			var ar = arr[1].split('volume: ');
-			var v = ar[1].slice(0,3);
-			infoOut += ' &nbsp; <span>'+v+'</span>';
-		}
-		return infoOut;
-	}
-*/
 
 ///////////////////////////////
 	Element.prototype.remove = function() {
@@ -421,10 +408,12 @@ var pierwszy = true;
 /*QQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQ*/	
 
 		function execFavourities(ten){
-			var windowparameter = ten.dataset.windowparameter;
-			console.log('windowparameter=',decodeURIComponent(windowparameter),windowparameter);
-			
-var query='{"jsonrpc":"2.0","method":"Files.GetDirectory","id":"1","params":["'+windowparameter+'"}]';
+			//var windowparameter = ten.dataset.windowparameter;
+			//console.log('windowparameter=',decodeURIComponent(windowparameter),windowparameter);
+var path = ten.dataset.path;			
+//var query='{"jsonrpc":"2.0","method":"Files.GetDirectory","id":"1","params":["'+windowparameter+'"}]';
+var query='{"id":1,"jsonrpc":"2.0","method":"Player.Open","params":{"item":{"file":"'+path+'"}}}';
+
 sendToKodi(query);
 
 // get-info
@@ -452,7 +441,8 @@ http://82.145.73.90/jsonrpc?request={"jsonrpc":"2.0","method":"Files.GetDirector
 				//console.log(favs[f]);
 				//console.log(favs[f]['windowparameter']);
 				//favdiv.innerHTML += req.favourites[f]['title']+' / '+req.favourites[f]['thumbnail']+' / '+favs[f]['windowparameter'];
-				favdiv.innerHTML += '<p onClick="execFavourities(this);" data-windowparameter="'+favs[f]['windowparameter']+'">'+favs[f]['title']+'</p>';				
+				//favdiv.innerHTML += '<p onClick="execFavourities(this);" data-windowparameter="'+favs[f]['windowparameter']+'">'+favs[f]['title']+'</p>';				
+				favdiv.innerHTML += '<p class="fav" onClick="execFavourities(this);" data-path="'+favs[f]['path']+'">'+favs[f]['title']+'</p>';
 			 }
 		}
 
